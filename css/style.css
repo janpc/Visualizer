@@ -1,197 +1,372 @@
-
 :root {
-    --dark: #1d283e;
-    --light: #d1d7e0;
-    --accent:#802bb1;
-    --smooth:#564f6f;
-    --neutral:#4c495d
-  }
+  --dark: #1d283e;
+  --light: #d1d7e0;
+  --accent: #802bb1;
+  --smooth: #564f6f;
+  --neutral: #4c495d;
+}
 
-*{
-    font-family: 'Lato', sans-serif;
-    color:var(--light);
+* {
+  font-family: "Lato", sans-serif;
+  color: var(--light);
 }
-body{
-    background-color: var(--dark);
+body {
+  background-color: var(--dark);
 }
-.mainPage{
-    display:none;
+.mainPage {
+  display: none;
 }
-.visualizerPage{
-    display:none;
+.visualizerPage {
+  display: none;
 }
-.shadow{
-    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.4);
+.shadow {
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.4);
 }
 
 input[type="color"] {
-	-webkit-appearance: none;
-	border: none;
+  -webkit-appearance: none;
+  border: none;
 }
 input[type="color"]::-webkit-color-swatch-wrapper {
-	padding: 0;
+  padding: 0;
 }
 input[type="color"]::-webkit-color-swatch {
-	border: none;
+  border: none;
 }
 
 /*-------------------------------Main Page-----------------------------*/
 
-.mainPage{
-    text-align: center;
-    margin:0 5%;
-    
+.mainPage {
+  text-align: center;
+  margin: 0 5%;
 }
-.mainPage>h1{
-    font-size: 50px;
-    font-weight: 700;
+.mainPage > h1 {
+  font-size: 50px;
+  font-weight: 700;
 }
-.mainPage>.definition p{
-    font-size: large;
-    font-weight: 400;
+.mainPage > .definition p {
+  font-size: large;
+  font-weight: 400;
 }
-.selectSongSearch{
-    display:flex;
+.selectSongSearch {
+  display: flex;
+  justify-content: center;
+}
+.selectSongSearch > span {
+  color: var(--dark);
+}
+.selectSongSearch > .musicSearch {
+  background-color: var(--light);
+  border-radius: 10px;
+  border: none;
+  color: var(--dark);
+  padding-left: 5px;
+  font-size: 18px;
+}
+.selectSongSearch > .musicSearch:focus {
+  outline: none;
+  border: 2px solid var(--dark);
+}
+.mainPage > .section {
+  border-radius: 10px;
+  background-color: var(--smooth);
+  padding-top: 10px;
+  padding-block-end: 0.5em;
+  margin: 1em 0;
+}
+.sectionTitle > .sectionButton {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  background-color: #00000000;
+  border: none;
+  margin-block-end: 0.2em;
+  margin-block-start: 0.2em;
+}
+.sectionTitle > .sectionButton:focus {
+  outline: none;
+}
+.sectionTitle > .sectionButton > h2 {
+  outline: none;
+}
+.sectionTitle > .sectionButton:focus > h2 {
+  outline: none;
+  text-decoration: underline;
+}
+.sectionTitle > .sectionButton > span {
+  font-size: 30px;
+  padding-top: 16px;
+}
+.sectionContent {
+  display: none;
+}
+.mainPage
+  > .selectSong
+  > .sectionContent
+  > .contentAndAnimation
+  > .musicResults {
+  padding: 5px 10px;
+}
+.mainPage
+  > .selectSong
+  > .sectionContent
+  > .contentAndAnimation
+  > .musicResults
+  > .songItem {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--light);
+  background-color: var(--dark);
+  border: none;
+  border-radius: 10px;
+  margin: 5px 0;
+  padding: 0 1em;
+  width: 100%;
+  height: 44px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.mainPage
+  > .selectSong
+  > .sectionContent
+  > .contentAndAnimation
+  > .musicResults
+  > .material-icons {
+  background-color: var(--neutral);
+  font-size: 24px;
+}
+.selectAnimation > .sectionContent > * {
+  margin: 2px;
+}
+.selectAnimation > .sectionContent > .contentAndAnimation > div > input,
+.selectAnimation > .sectionContent > .contentAndAnimation > div > select {
+  margin: 2px;
+  background-color: var(--dark);
+  border-radius: 10px;
+  border: none;
+  color: var(--light);
+  padding-left: 5px;
+  font-size: 18px;
+}
+
+.selectAnimation > .sectionContent > .contentAndAnimation > div > input:focus,
+.selectAnimation > .sectionContent > .contentAndAnimation > div > select:focus {
+  outline: none;
+  border: 1px solid var(--light);
+}
+.selectAnimation .colorsMain {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.selectAnimation .colorsMain > input[type="color"] {
+  margin: 2px;
+  width: 50%;
+  height: 44px;
+  background-color: #00000000;
+}
+.selectAnimation .colorsMain > .addColor {
+  margin: 2px;
+  width: 20%;
+  height: 44px;
+  background-color: var(--dark);
+  border-radius: 10px;
+  border: none;
+}
+
+.startVisualizerButton {
+  position: fixed;
+  bottom: 0.5em;
+  right: 0.5em;
+  font-size: 45px;
+  border-radius: 50%;
+  padding: 5px 5px;
+  border: none;
+  background-color: var(--accent);
+}
+.startVisualizerButton:hover,
+.startVisualizerButton:focus {
+  outline: none;
+  box-shadow: 0 0 10px var(--accent);
+}
+.musicAnimation {
+  display: none;
+}
+.animations {
+  display: none;
+}
+
+@media (min-width: 900px) {
+  .musicAnimation {
+    display: block;
+    width: 50%;
+  }
+  .musicAnimation > svg {
+    width: 30vw;
+    height: 30vw;
+    margin: auto auto;
+  }
+  .animationInputs {
+    width: 50%;
+    height: 30vw;
+    margin-bottom: 1em;
+    overflow-y: scroll;
+  }
+  .animations {
+    display: block;
+    width: 50%;
+  }
+  .musicResults {
+    width: 50%;
+    height: 30vw;
+    margin-bottom: 1em;
+    overflow-y: scroll;
+  }
+  .contentAndAnimation {
+    display: flex;
+    flex-direction: row;
+  }
+  .mainPage
+    > .selectSong
+    > .sectionContent
+    > .contentAndAnimation
+    > .musicResults
+    > .songItem {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--light);
+    background-color: var(--dark);
+    border: none;
+    border-radius: 10px;
+    margin: 5px 0;
+    padding: 0 1em;
+    width: 80%;
+  }
+
+  .musicAnimationSVG {
+    animation: spin 10s linear infinite;
+  }
+
+  .selectSongSearch {
+    display: flex;
     justify-content: center;
-    
-    
-}
-.selectSongSearch>span{
-    color:var(--dark);
-}
-.selectSongSearch>.musicSearch{
+    margin: 2em 0;
+  }
+  .selectSongSearch > span {
+    font-size: 36px;
+    color: var(--dark);
+  }
+  .selectSongSearch > .musicSearch {
     background-color: var(--light);
     border-radius: 10px;
-    border:none;
-    color:var(--dark);
-    padding-left: 5px;
-    font-size: 18px;
-}
-.selectSongSearch>.musicSearch:focus{
-    outline: none;
-    border:2px solid var(--dark);
-}
-.mainPage>.section{
-    border-radius: 10px;;
-    background-color: var(--smooth);
-    padding-top:10px;
-    padding-block-end: 0.5em;
-    margin:1em 0;
-    
-}
-.sectionTitle>.sectionButton{
-    margin:0 auto;
-    display:flex;
-    justify-content: center;
-    background-color: #00000000;
-    border:none;
-    margin-block-end: 0.2em;
-    margin-block-start: 0.2em;
-    
-
-}
-.sectionTitle>.sectionButton:focus{
-    outline:none;
-
-}
-.sectionTitle>.sectionButton>h2{
-    outline: none;
-}
-.sectionTitle>.sectionButton:focus>h2{
-    outline: none;
-    text-decoration: underline;
-
-}
-.sectionTitle>.sectionButton>span{
-    font-size: 30px;
-    padding-top:16px;
-}
-.sectionContent{
-    display:none;
-}
-.mainPage>.selectSong>.sectionContent>.musicResults{
-    padding:5px 10px;
-}
-.mainPage>.selectSong>.sectionContent>.musicResults>.songItem{
-    font-size:14px;
-    font-weight: 500;
-    color:var(--light);
-    background-color: var(--dark);
-    border:none;
-    border-radius: 10px;;
-    margin:5px 0;
-    padding:0 1em;
-    width: 100%;
-    height: 44px;;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-.mainPage>.selectSong>.sectionContent>.musicResults>.material-icons{
-    background-color: var(--neutral);
-    font-size:24px;
-}
-.selectAnimation>.sectionContent>*{
-    margin:2px;
-}
-.selectAnimation>.sectionContent>input, .selectAnimation>.sectionContent>select{
-    margin:2px;
-    background-color: var(--dark);
-    border-radius: 10px;
-    border:none;
-    color:var(--light);
-    padding-left: 5px;
-    font-size: 18px;
-}
-
-.selectAnimation>.sectionContent>input:focus, .selectAnimation>.sectionContent>select:focus{
-    outline: none;
-    border:1px solid var(--light);
-}
-.selectAnimation .colorsMain{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width:100%;
-}
-.selectAnimation .colorsMain>input[type="color"]{
-    margin:2px;
-    width: 50%;
-    height: 44px;
-    background-color: #00000000;
-}
-.selectAnimation .colorsMain>.addColor{
-    margin:2px;
-    width: 20%;
-    height: 44px;
-    background-color: var(--dark);
-    border-radius: 10px;
-    border:none;
-}
-
-.startVisualizerButton{
-    position:fixed;
-    bottom: 0.5em;
-    right:0.5em;
-    font-size: 45px;
-    border-radius: 50%;
-    padding: 5px 5px;
     border: none;
-    background-color: var(--accent);
-}
-.startVisualizerButton:hover, .startVisualizerButton:focus{
+    color: var(--dark);
+    padding-left: 5px;
+    font-size: 24px;
+    width: 50%;
+  }
+  .selectSongSearch > .musicSearch:focus {
     outline: none;
-    box-shadow: 0 0 10px var(--accent);
+    border: 2px solid var(--dark);
+  }
+
+  /*------------------------scrollbar---------------------*/
+  /* width */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: var(--dark);
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: var(--light);
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--neutral);
+  }
+
+  .circle6 {
+      position:absolute;
+    height: 0vw;
+    width: 0vw;
+    animation: up 3s 0s ease-in-out infinite alternate;
+  }
+  .circle1 {
+    position:absolute;
+    height: 0vw;
+    width: 0vw;
+    animation: up 3s 0.5s  linear infinite alternate;
+  }
+  .circle2 {
+    position:absolute;
+    height: 0vw;
+    width: 0vw;
+    animation: up 3s 1s ease-out infinite alternate;
+  }
+  .circle3 {
+    position:absolute;
+    height: 0vw;
+    width: 0vw;
+    animation: up 3s 1.5s ease-in infinite alternate;
+  }
+  .circle4 {
+    position:absolute;
+    height: 0vw;
+    width: 0vw;
+    animation: up 3s 2s linear infinite alternate;
+  }
+  .circle5 {
+    position:absolute;
+    height: 0vw;
+    width: 0vw;
+    animation: up 3s 2.5s ease-in-out infinite alternate;
+  }
 }
 
+.active {
+  display: block;
+}
 
+@-moz-keyframes spin {
+  100% {
+    -moz-transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
 
-
-
-
-
-
-.active{
-    display:block;
+@keyframes up {
+  0% {
+      left:73vw;
+    margin-top: 15vw;
+    height: 0vw;
+    width: 0vw;
+    fill:var(--neutral);
+  }
+  
+  100% {
+    left:58vw;
+    margin-top: 0vw;
+    height: 30vw;
+    width:30vw;
+    fill:var(--light);
+  }
 }
