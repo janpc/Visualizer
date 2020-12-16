@@ -1,9 +1,196 @@
+
+:root {
+    --dark: #1d283e;
+    --light: #d1d7e0;
+    --accent:#802bb1;
+    --smooth:#564f6f;
+    --neutral:#4c495d
+  }
+
+*{
+    font-family: 'Lato', sans-serif;
+    color:var(--light);
+}
+body{
+    background-color: var(--dark);
+}
 .mainPage{
     display:none;
 }
 .visualizerPage{
     display:none;
 }
+.shadow{
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.4);
+}
+
+input[type="color"] {
+	-webkit-appearance: none;
+	border: none;
+}
+input[type="color"]::-webkit-color-swatch-wrapper {
+	padding: 0;
+}
+input[type="color"]::-webkit-color-swatch {
+	border: none;
+}
+
+/*-------------------------------Main Page-----------------------------*/
+
+.mainPage{
+    text-align: center;
+    margin:0 5%;
+    
+}
+.mainPage>h1{
+    font-size: 50px;
+    font-weight: 700;
+}
+.mainPage>.definition p{
+    font-size: large;
+    font-weight: 400;
+}
+.selectSongSearch{
+    display:flex;
+    justify-content: center;
+    
+    
+}
+.selectSongSearch>span{
+    color:var(--dark);
+}
+.selectSongSearch>.musicSearch{
+    background-color: var(--light);
+    border-radius: 10px;
+    border:none;
+    color:var(--dark);
+    padding-left: 5px;
+    font-size: 18px;
+}
+.selectSongSearch>.musicSearch:focus{
+    outline: none;
+    border:2px solid var(--dark);
+}
+.mainPage>.section{
+    border-radius: 10px;;
+    background-color: var(--smooth);
+    padding-top:10px;
+    padding-block-end: 0.5em;
+    margin:1em 0;
+    
+}
+.sectionTitle>.sectionButton{
+    margin:0 auto;
+    display:flex;
+    justify-content: center;
+    background-color: #00000000;
+    border:none;
+    margin-block-end: 0.2em;
+    margin-block-start: 0.2em;
+    
+
+}
+.sectionTitle>.sectionButton:focus{
+    outline:none;
+
+}
+.sectionTitle>.sectionButton>h2{
+    outline: none;
+}
+.sectionTitle>.sectionButton:focus>h2{
+    outline: none;
+    text-decoration: underline;
+
+}
+.sectionTitle>.sectionButton>span{
+    font-size: 30px;
+    padding-top:16px;
+}
+.sectionContent{
+    display:none;
+}
+.mainPage>.selectSong>.sectionContent>.musicResults{
+    padding:5px 10px;
+}
+.mainPage>.selectSong>.sectionContent>.musicResults>.songItem{
+    font-size:14px;
+    font-weight: 500;
+    color:var(--light);
+    background-color: var(--dark);
+    border:none;
+    border-radius: 10px;;
+    margin:5px 0;
+    padding:0 1em;
+    width: 100%;
+    height: 44px;;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.mainPage>.selectSong>.sectionContent>.musicResults>.material-icons{
+    background-color: var(--neutral);
+    font-size:24px;
+}
+.selectAnimation>.sectionContent>*{
+    margin:2px;
+}
+.selectAnimation>.sectionContent>input, .selectAnimation>.sectionContent>select{
+    margin:2px;
+    background-color: var(--dark);
+    border-radius: 10px;
+    border:none;
+    color:var(--light);
+    padding-left: 5px;
+    font-size: 18px;
+}
+
+.selectAnimation>.sectionContent>input:focus, .selectAnimation>.sectionContent>select:focus{
+    outline: none;
+    border:1px solid var(--light);
+}
+.selectAnimation .colorsMain{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width:100%;
+}
+.selectAnimation .colorsMain>input[type="color"]{
+    margin:2px;
+    width: 50%;
+    height: 44px;
+    background-color: #00000000;
+}
+.selectAnimation .colorsMain>.addColor{
+    margin:2px;
+    width: 20%;
+    height: 44px;
+    background-color: var(--dark);
+    border-radius: 10px;
+    border:none;
+}
+
+.startVisualizerButton{
+    position:fixed;
+    bottom: 0.5em;
+    right:0.5em;
+    font-size: 45px;
+    border-radius: 50%;
+    padding: 5px 5px;
+    border: none;
+    background-color: var(--accent);
+}
+.startVisualizerButton:hover, .startVisualizerButton:focus{
+    outline: none;
+    box-shadow: 0 0 10px var(--accent);
+}
+
+
+
+
+
+
+
 
 .active{
     display:block;
