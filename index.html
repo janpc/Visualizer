@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="icon" href="favicon-32x32.png" type="image/png" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+
+    <title>Visualizer</title>
+  </head>
+  <body class="visualizer" id="visualizer">
+    <section id="mainPage" class="mainPage active">
+      <h1>Visualizer</h1>
+      <section id="definition" class="definition"></section>
+      <section id="selectSong" class="selectSong"></section>
+      <section id="selectAnimation" class="selectAnimation"></section>
+      <button onclick="" type="button">Start visualizer</button>
+    </section>
+    <section id="visualizerPage" class="visualizerPage">
+      <canvas id="analyser_render"></canvas>
+      <section class="buttons buttons__top">
+        <div id="colors">
+          <input type="color" id="color-0" name="favcolor" value="#ff0000" />
+          <input type="color" id="color-1" name="favcolor" value="#00ff00" />
+          <input type="color" id="color-2" name="favcolor" value="#0000ff" />
+          <select name="animations" id="animations"></select>
+        </div>
+      </section>
+      <section class="buttons buttons__bottom">
+        <button onclick="" type="button">Play Audio</button>
+        <button onclick="" type="button">Pause Audio</button>
+        <button onclick="" type="button">Full Screen</button>
+        <select name="songs" id="songs"></select>
+        <div class="slidecontainer">
+          <input
+            type="range"
+            min="0"
+            max="1000"
+            value="0"
+            class="slider"
+            id="timeRange"
+          />
+        </div>
+      </section>
+    </section>
+  </body>
+</html>

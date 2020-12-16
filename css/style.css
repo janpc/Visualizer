@@ -1,0 +1,10 @@
+.mainPage{
+    display:none;
+}
+.visualizerPage{
+    display:none;
+}
+
+.active{
+    display:block;
+}
