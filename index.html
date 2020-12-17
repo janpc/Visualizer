@@ -15,8 +15,8 @@
         href="https://fonts.googleapis.com/icon?family=Material+Icons"
       />
     </head>
-    <link rel="stylesheet" href="css/style.css" />
-
+    <link rel="stylesheet" href="css/mainPage.css" />
+    <link rel="stylesheet" href="css/visualizer.css" />
     <title>Visualizer</title>
   </head>
   <body class="visualizer" id="visualizer">
@@ -32,7 +32,7 @@
       </section>
       <section id="selectSong" class="selectSong section shadow">
         <div class="sectionTitle shadowNone" id="selectSongTitle">
-          <button type="button" class="sectionButton">
+          <button type="button" class="sectionButton clickable">
             <h2>Select Song</h2>
             <span class="material-icons"> keyboard_arrow_down </span>
           </button>
@@ -40,94 +40,13 @@
         <div class="sectionContent shadowNone" id="selectSongContent">
           <div class="selectSongSearch">
             <span class="material-icons"> search </span>
-            <input type="search" id="musicSearchMain" class="musicSearch" />
+            <input
+              type="search"
+              id="musicSearchMain"
+              class="musicSearch clickable"
+            />
           </div>
           <div class="contentAndAnimation">
-            <section id="musicResults" class="musicResults">
-              <button
-                type="button"
-                title="Fritz & Paul Kalkbrenner - Sky and Sand (Original Mix)"
-                id="Fritz & Paul Kalkbrenner - Sky and Sand (Original Mix)"
-                class="songItem shadow"
-              >
-                Fritz & Paul Kalkbrenner - Sky and Sand (Original Mix)
-              </button>
-              <button
-                type="button"
-                title="Fritz & Paul Kalkbrenner - Sky and Sand (Original Mix)"
-                id="Fritz & Paul Kalkbrenner - Sky and Sand (Original Mix)"
-                class="songItem shadow"
-              >
-                Outkast - Hey Ya!
-              </button>
-              <button
-                type="button"
-                title="Dr. Kucho! & Gregor Salto - Can't Stop Playing (Oliver Heldens & Gregor Salto Remix)"
-                id="Dr. Kucho! & Gregor Salto - Can't Stop Playing (Oliver Heldens & Gregor Salto Remix)"
-                class="songItem shadow"
-              >
-                Dr. Kucho! & Gregor Salto - Can't Stop Playing (Oliver Heldens &
-                Gregor Salto Remix)
-              </button>
-              <button
-                type="button"
-                title="Fritz & Paul Kalkbrenner - Sky and Sand (Original Mix)"
-                id="Fritz & Paul Kalkbrenner - Sky and Sand (Original Mix)"
-                class="songItem shadow"
-              >
-                Fritz & Paul Kalkbrenner - Sky and Sand (Original Mix)
-              </button>
-              <button
-                type="button"
-                title="Fritz & Paul Kalkbrenner - Sky and Sand (Original Mix)"
-                id="Fritz & Paul Kalkbrenner - Sky and Sand (Original Mix)"
-                class="songItem shadow"
-              >
-                Outkast - Hey Ya!
-              </button>
-              <button
-                type="button"
-                title="Dr. Kucho! & Gregor Salto - Can't Stop Playing (Oliver Heldens & Gregor Salto Remix)"
-                id="Dr. Kucho! & Gregor Salto - Can't Stop Playing (Oliver Heldens & Gregor Salto Remix)"
-                class="songItem shadow"
-              >
-                Dr. Kucho! & Gregor Salto - Can't Stop Playing (Oliver Heldens &
-                Gregor Salto Remix)
-              </button>
-              <button
-                type="button"
-                title="Fritz & Paul Kalkbrenner - Sky and Sand (Original Mix)"
-                id="Fritz & Paul Kalkbrenner - Sky and Sand (Original Mix)"
-                class="songItem shadow"
-              >
-                Fritz & Paul Kalkbrenner - Sky and Sand (Original Mix)
-              </button>
-              <button
-                type="button"
-                title="Fritz & Paul Kalkbrenner - Sky and Sand (Original Mix)"
-                id="Fritz & Paul Kalkbrenner - Sky and Sand (Original Mix)"
-                class="songItem shadow"
-              >
-                Outkast - Hey Ya!
-              </button>
-              <button
-                type="button"
-                title="Dr. Kucho! & Gregor Salto - Can't Stop Playing (Oliver Heldens & Gregor Salto Remix)"
-                id="Dr. Kucho! & Gregor Salto - Can't Stop Playing (Oliver Heldens & Gregor Salto Remix)"
-                class="songItem shadow"
-              >
-                Dr. Kucho! & Gregor Salto - Can't Stop Playing (Oliver Heldens &
-                Gregor Salto Remix)
-              </button>
-              <button
-                type="button"
-                title="add"
-                id="addSongs"
-                class="songItem shadow material-icons"
-              >
-                add
-              </button>
-            </section>
             <div class="musicAnimation">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -156,12 +75,97 @@
                 />
               </svg>
             </div>
+            <section id="musicResults" class="musicResults">
+              <button
+                type="button"
+                title="Fritz & Paul Kalkbrenner - Sky and Sand (Original Mix)"
+                id="Fritz & Paul Kalkbrenner - Sky and Sand (Original Mix)"
+                class="songItem shadow clickable"
+              >
+                Fritz & Paul Kalkbrenner - Sky and Sand (Original Mix)
+              </button>
+              <button
+                type="button"
+                title="Fritz & Paul Kalkbrenner - Sky and Sand (Original Mix)"
+                id="Fritz & Paul Kalkbrenner - Sky and Sand (Original Mix)"
+                class="songItem shadow clickable"
+              >
+                Outkast - Hey Ya!
+              </button>
+              <button
+                type="button"
+                title="Dr. Kucho! & Gregor Salto - Can't Stop Playing (Oliver Heldens & Gregor Salto Remix)"
+                id="Dr. Kucho! & Gregor Salto - Can't Stop Playing (Oliver Heldens & Gregor Salto Remix)"
+                class="songItem shadow clickable"
+              >
+                Dr. Kucho! & Gregor Salto - Can't Stop Playing (Oliver Heldens &
+                Gregor Salto Remix)
+              </button>
+              <button
+                type="button"
+                title="Fritz & Paul Kalkbrenner - Sky and Sand (Original Mix)"
+                id="Fritz & Paul Kalkbrenner - Sky and Sand (Original Mix)"
+                class="songItem shadow clickable"
+              >
+                Fritz & Paul Kalkbrenner - Sky and Sand (Original Mix)
+              </button>
+              <button
+                type="button"
+                title="Fritz & Paul Kalkbrenner - Sky and Sand (Original Mix)"
+                id="Fritz & Paul Kalkbrenner - Sky and Sand (Original Mix)"
+                class="songItem shadow clickable"
+              >
+                Outkast - Hey Ya!
+              </button>
+              <button
+                type="button"
+                title="Dr. Kucho! & Gregor Salto - Can't Stop Playing (Oliver Heldens & Gregor Salto Remix)"
+                id="Dr. Kucho! & Gregor Salto - Can't Stop Playing (Oliver Heldens & Gregor Salto Remix)"
+                class="songItem shadow clickable"
+              >
+                Dr. Kucho! & Gregor Salto - Can't Stop Playing (Oliver Heldens &
+                Gregor Salto Remix)
+              </button>
+              <button
+                type="button"
+                title="Fritz & Paul Kalkbrenner - Sky and Sand (Original Mix)"
+                id="Fritz & Paul Kalkbrenner - Sky and Sand (Original Mix)"
+                class="songItem shadow clickable"
+              >
+                Fritz & Paul Kalkbrenner - Sky and Sand (Original Mix)
+              </button>
+              <button
+                type="button"
+                title="Fritz & Paul Kalkbrenner - Sky and Sand (Original Mix)"
+                id="Fritz & Paul Kalkbrenner - Sky and Sand (Original Mix)"
+                class="songItem shadow clickable"
+              >
+                Outkast - Hey Ya!
+              </button>
+              <button
+                type="button"
+                title="Dr. Kucho! & Gregor Salto - Can't Stop Playing (Oliver Heldens & Gregor Salto Remix)"
+                id="Dr. Kucho! & Gregor Salto - Can't Stop Playing (Oliver Heldens & Gregor Salto Remix)"
+                class="songItem shadow clickable"
+              >
+                Dr. Kucho! & Gregor Salto - Can't Stop Playing (Oliver Heldens &
+                Gregor Salto Remix)
+              </button>
+              <button
+                type="button"
+                title="add"
+                id="addSongs"
+                class="songItem shadow material-icons clickable"
+              >
+                add
+              </button>
+            </section>
           </div>
         </div>
       </section>
       <section id="selectAnimation" class="selectAnimation section shadow">
         <div class="sectionTitle shadowNone" id="selectAnimationTitle">
-          <button type="button" class="sectionButton">
+          <button type="button" class="sectionButton clickable">
             <h2>Change Animation</h2>
             <span class="material-icons"> keyboard_arrow_down </span>
           </button>
@@ -169,7 +173,11 @@
         <div class="sectionContent shadowNone" id="selectAnimationContent">
           <div class="contentAndAnimation">
             <div class="animationInputs">
-              <select name="animationsMain" id="animationsMain">
+              <select
+                name="animationsMain"
+                id="animationsMain"
+                class="clickable"
+              >
                 <option value="Show squares">Show squares</option>
                 <option value="Show Expand Square">Show Expand Square</option>
                 <option value="Show Circles">Show Circles</option>
@@ -177,36 +185,117 @@
                 <option value="Show Pad">Show Pad</option>
               </select>
               <div class="colorsMain" id="colorsMain">
+                <button
+                  type="button"
+                  id="removeColorMain"
+                  class="material-icons addColor clickable"
+                >
+                  remove
+                </button>
                 <input
                   type="color"
                   id="color-0"
                   name="favcolor"
                   value="#ff0000"
+                  class="clickable"
                 />
                 <input
                   type="color"
                   id="color-1"
                   name="favcolor"
                   value="#00ff00"
+                  class="clickable"
                 />
                 <input
                   type="color"
                   id="color-2"
                   name="favcolor"
                   value="#0000ff"
+                  class="clickable"
                 />
-                <button type="button" class="material-icons addColor">
+
+                <button
+                  type="button"
+                  id="addColorMain"
+                  class="material-icons addColor clickable"
+                >
                   add
                 </button>
               </div>
             </div>
             <div class="animations">
-                <svg xmlns="http://www.w3.org/2000/svg" id="Icons" height="512" viewBox="0 0 74 74" width="512" class="circle1"><path d="m37 72a35 35 0 1 1 35-35 35.04 35.04 0 0 1 -35 35zm0-68a33 33 0 1 0 33 33 33.037 33.037 0 0 0 -33-33z"/></svg>
-                <svg xmlns="http://www.w3.org/2000/svg" id="Icons" height="512" viewBox="0 0 74 74" width="512" class="circle2"><path d="m37 72a35 35 0 1 1 35-35 35.04 35.04 0 0 1 -35 35zm0-68a33 33 0 1 0 33 33 33.037 33.037 0 0 0 -33-33z"/></svg>
-                <svg xmlns="http://www.w3.org/2000/svg" id="Icons" height="512" viewBox="0 0 74 74" width="512" class="circle3"><path d="m37 72a35 35 0 1 1 35-35 35.04 35.04 0 0 1 -35 35zm0-68a33 33 0 1 0 33 33 33.037 33.037 0 0 0 -33-33z"/></svg>
-                <svg xmlns="http://www.w3.org/2000/svg" id="Icons" height="512" viewBox="0 0 74 74" width="512" class="circle4"><path d="m37 72a35 35 0 1 1 35-35 35.04 35.04 0 0 1 -35 35zm0-68a33 33 0 1 0 33 33 33.037 33.037 0 0 0 -33-33z"/></svg>
-                <svg xmlns="http://www.w3.org/2000/svg" id="Icons" height="512" viewBox="0 0 74 74" width="512" class="circle5"><path d="m37 72a35 35 0 1 1 35-35 35.04 35.04 0 0 1 -35 35zm0-68a33 33 0 1 0 33 33 33.037 33.037 0 0 0 -33-33z"/></svg>
-                <svg xmlns="http://www.w3.org/2000/svg" id="Icons" height="512" viewBox="0 0 74 74" width="512" class="circle6"><path d="m37 72a35 35 0 1 1 35-35 35.04 35.04 0 0 1 -35 35zm0-68a33 33 0 1 0 33 33 33.037 33.037 0 0 0 -33-33z"/></svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                id="Icons"
+                height="512"
+                viewBox="0 0 74 74"
+                width="512"
+                class="circle1"
+              >
+                <path
+                  d="m37 72a35 35 0 1 1 35-35 35.04 35.04 0 0 1 -35 35zm0-68a33 33 0 1 0 33 33 33.037 33.037 0 0 0 -33-33z"
+                />
+              </svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                id="Icons"
+                height="512"
+                viewBox="0 0 74 74"
+                width="512"
+                class="circle2"
+              >
+                <path
+                  d="m37 72a35 35 0 1 1 35-35 35.04 35.04 0 0 1 -35 35zm0-68a33 33 0 1 0 33 33 33.037 33.037 0 0 0 -33-33z"
+                />
+              </svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                id="Icons"
+                height="512"
+                viewBox="0 0 74 74"
+                width="512"
+                class="circle3"
+              >
+                <path
+                  d="m37 72a35 35 0 1 1 35-35 35.04 35.04 0 0 1 -35 35zm0-68a33 33 0 1 0 33 33 33.037 33.037 0 0 0 -33-33z"
+                />
+              </svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                id="Icons"
+                height="512"
+                viewBox="0 0 74 74"
+                width="512"
+                class="circle4"
+              >
+                <path
+                  d="m37 72a35 35 0 1 1 35-35 35.04 35.04 0 0 1 -35 35zm0-68a33 33 0 1 0 33 33 33.037 33.037 0 0 0 -33-33z"
+                />
+              </svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                id="Icons"
+                height="512"
+                viewBox="0 0 74 74"
+                width="512"
+                class="circle5"
+              >
+                <path
+                  d="m37 72a35 35 0 1 1 35-35 35.04 35.04 0 0 1 -35 35zm0-68a33 33 0 1 0 33 33 33.037 33.037 0 0 0 -33-33z"
+                />
+              </svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                id="Icons"
+                height="512"
+                viewBox="0 0 74 74"
+                width="512"
+                class="circle6"
+              >
+                <path
+                  d="m37 72a35 35 0 1 1 35-35 35.04 35.04 0 0 1 -35 35zm0-68a33 33 0 1 0 33 33 33.037 33.037 0 0 0 -33-33z"
+                />
+              </svg>
             </div>
           </div>
         </div>
@@ -214,27 +303,88 @@
       <button
         onclick=""
         type="button"
-        class="material-icons startVisualizerButton shadow"
+        class="material-icons startVisualizerButton shadow clickable"
+        id="startVisualizerButton"
       >
         play_arrow
       </button>
     </section>
     <section id="visualizerPage" class="visualizerPage">
       <canvas id="analyser_render"></canvas>
-      <section class="buttons buttons__top">
+      <button
+        type="button"
+        class="material-icons goBack shadow clickable"
+        id="goBack"
+      >
+        arrow_back
+      </button>
+      <section class="buttons buttons__top" id="buttonsTop">
         <div id="colors">
-          <input type="color" id="color-0" name="favcolor" value="#ff0000" />
-          <input type="color" id="color-1" name="favcolor" value="#00ff00" />
-          <input type="color" id="color-2" name="favcolor" value="#0000ff" />
-          <select name="animations" id="animations"></select>
+          <button
+            type="button"
+            class="material-icons addColorVisualizer shadow clickable"
+            id="removeColorVisualizer"
+          >
+            remove
+          </button>
+          <input
+            type="color"
+            class="clickable"
+            id="color-0"
+            name="favcolor"
+            value="#ff0000"
+          />
+          <input
+            type="color"
+            class="clickable"
+            id="color-1"
+            name="favcolor"
+            value="#00ff00"
+          />
+          <input
+            type="color"
+            class="clickable"
+            id="color-2"
+            name="favcolor"
+            value="#0000ff"
+          />
+          <button
+            type="button"
+            class="material-icons addColorVisualizer shadow clickable"
+            id="addColorVisualizer"
+          >
+            add
+          </button>
         </div>
+        <select
+          name="animationsVisualizer"
+          id="animationsVisualizer"
+          class="animationsVisualizer"
+        >
+          <option value="Show squares">Show squares</option>
+          <option value="Show Expand Square">Show Expand Square</option>
+          <option value="Show Circles">Show Circles</option>
+          <option value="Show Arcs">Show Arcs</option>
+          <option value="Show Pad">Show Pad</option>
+        </select>
       </section>
-      <section class="buttons buttons__bottom">
-        <button onclick="" type="button">Play Audio</button>
-        <button onclick="" type="button">Pause Audio</button>
-        <button onclick="" type="button">Full Screen</button>
-        <select name="songs" id="songs"></select>
-        <div class="slidecontainer">
+      <section class="buttons buttons__bottom" id="buttonsBottom">
+        <button type="button" class="material-icons musicButtons clickable">
+          shuffle
+        </button>
+        <button type="button" class="material-icons musicButtons clickable">
+          skip_previous
+        </button>
+        <button type="button" class="material-icons musicButtons clickable">
+          play_arrow
+        </button>
+        <button type="button" class="material-icons musicButtons clickable">
+          skip_next
+        </button>
+        <button type="button" class="material-icons musicButtons clickable">
+          fullscreen
+        </button>
+        <div class="slidecontainer clickable">
           <input
             type="range"
             min="0"

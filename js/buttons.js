@@ -1,3 +1,5 @@
+let page='mainPage';
+
 let selectSongButton=document.querySelector(".selectSong>.sectionTitle>.sectionButton");
 let selectAnimationButton=document.querySelector(".selectAnimation>.sectionTitle>.sectionButton");
 
@@ -16,4 +18,30 @@ function openSection(event){
     }else{
         content.classList.add('active');
     }
+}
+
+let startVisualizerButton=document.getElementById("startVisualizerButton");
+let goBack=document.getElementById('goBack');
+startVisualizerButton.addEventListener('click', changePage);
+goBack.addEventListener('click', changePage);
+let bottomButtons=document.getElementById('buttonsBottom');
+bottomButtons.addEventListener('click', bottomFunctions);
+
+function changePage(){
+    console.log(goBack)
+    if(page=='mainPage'){
+        document.getElementById('mainPage').classList.remove('active');
+        document.getElementById('visualizerPage').classList.add('active');
+        document.querySelector(':root').style.setProperty('--dark', 'black');
+        page='visualizerPage';
+    }else if(page=='visualizerPage'){
+        document.getElementById('visualizerPage').classList.remove('active');
+        document.getElementById('mainPage').classList.add('active');
+        document.querySelector(':root').style.setProperty('--dark', '#1d283e');
+        page='mainPage';
+    }
+}
+
+function bottomFunctions(event){
+    console.log(event.target.id);
 }

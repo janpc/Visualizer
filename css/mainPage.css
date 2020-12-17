@@ -13,6 +13,9 @@
 body {
   background-color: var(--dark);
 }
+.clickable {
+  cursor: pointer;
+}
 .mainPage {
   display: none;
 }
@@ -127,6 +130,11 @@ input[type="color"]::-webkit-color-swatch {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+.songItem:focus,
+.songItem:hover {
+  box-shadow: 0 0 10px var(--light);
+  border: none;
+}
 .mainPage
   > .selectSong
   > .sectionContent
@@ -157,20 +165,20 @@ input[type="color"]::-webkit-color-swatch {
 }
 .selectAnimation .colorsMain {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   width: 100%;
 }
 .selectAnimation .colorsMain > input[type="color"] {
   margin: 2px;
-  width: 50%;
+  width: 44px;
   height: 44px;
   background-color: #00000000;
 }
 .selectAnimation .colorsMain > .addColor {
   margin: 2px;
-  width: 20%;
+  width: 44px;
   height: 44px;
   background-color: var(--dark);
   border-radius: 10px;
@@ -200,6 +208,20 @@ input[type="color"]::-webkit-color-swatch {
 }
 
 @media (min-width: 900px) {
+  .mainPage {
+    margin: 0 10vw;
+  }
+  .startVisualizerButton {
+
+    bottom: 1em;
+    right: 1em;
+    font-size: 65px;
+    border-radius: 50%;
+    padding: 10px 10px;
+    border: none;
+    background-color: var(--accent);
+  }
+
   .musicAnimation {
     display: block;
     width: 50%;
@@ -295,40 +317,49 @@ input[type="color"]::-webkit-color-swatch {
   }
 
   .circle6 {
-      position:absolute;
+    position: absolute;
     height: 0vw;
     width: 0vw;
     animation: up 3s 0s ease-in-out infinite alternate;
   }
   .circle1 {
-    position:absolute;
+    position: absolute;
     height: 0vw;
     width: 0vw;
-    animation: up 3s 0.5s  linear infinite alternate;
+    animation: up 3s 0.5s linear infinite alternate;
   }
   .circle2 {
-    position:absolute;
+    position: absolute;
     height: 0vw;
     width: 0vw;
     animation: up 3s 1s ease-out infinite alternate;
   }
   .circle3 {
-    position:absolute;
+    position: absolute;
     height: 0vw;
     width: 0vw;
     animation: up 3s 1.5s ease-in infinite alternate;
   }
   .circle4 {
-    position:absolute;
+    position: absolute;
     height: 0vw;
     width: 0vw;
     animation: up 3s 2s linear infinite alternate;
   }
   .circle5 {
-    position:absolute;
+    position: absolute;
     height: 0vw;
     width: 0vw;
     animation: up 3s 2.5s ease-in-out infinite alternate;
+  }
+  .selectAnimation > .sectionContent > .contentAndAnimation > div > input,
+  .selectAnimation > .sectionContent > .contentAndAnimation > div > select {
+    margin: 20px 0;
+  }
+  .selectAnimation .colorsMain > *:hover,
+  .selectAnimation .colorsMain > *:focus {
+    box-shadow: 0 0 10px var(--light);
+    border: none;
   }
 }
 
@@ -355,18 +386,18 @@ input[type="color"]::-webkit-color-swatch {
 
 @keyframes up {
   0% {
-      left:73vw;
+    left: 70vw;
     margin-top: 15vw;
     height: 0vw;
     width: 0vw;
-    fill:var(--neutral);
+    fill: var(--neutral);
   }
-  
+
   100% {
-    left:58vw;
+    left: 55vw;
     margin-top: 0vw;
     height: 30vw;
-    width:30vw;
-    fill:var(--light);
+    width: 30vw;
+    fill: var(--light);
   }
 }

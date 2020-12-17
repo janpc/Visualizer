@@ -1,0 +1,142 @@
+.hidden {
+  visibility: hidden;
+}
+
+body {
+  margin: 0;
+  display: block;
+  overflow: hidden;
+  position: relative;
+}
+
+/*-------------------------------------Buttons----------------------------------*/
+.buttons {
+  width: 50vw;
+  margin: 0 25vw;
+  position: absolute;
+  text-align: center;
+}
+.buttons > * {
+  color: var(--dark);
+  opacity: 0;
+  transition: opacity 0.5s ease-out;
+}
+.buttons:hover > * {
+  opacity: 100%;
+}
+/*-----------------------------------Buttons Bottom----------------------------*/
+.buttons__bottom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  top: 90vh;
+}
+.slidecontainer {
+  width: 100%;
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 5px;
+  border-radius: 5px;
+  background: var(--neutral);
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
+}
+.musicButtons {
+  font-size: 40px;
+  color: var(--light);
+  background-color: black;
+  border-radius: 10px;
+  border: none;
+  margin: 0 0.2em;
+}
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: var(--accent);
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: var(--accent);
+  cursor: pointer;
+}
+/*-----------------------------------Buttons Top-------------------------------*/
+.buttons__top {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  top: 50px;
+}
+.buttons__top > * {
+  margin: 5px;
+}
+.buttons__top > #colors > input[type="color"] {
+  width: 60px;
+  height: 40px;
+  background-color: #00000000;
+}
+.animationsVisualizer {
+  font-size: 18px;
+  height: auto;
+  background-color: var(--neutral);
+  color:var(--light)
+}
+.addColorVisualizer {
+  padding: 0;
+  font-size: 40px;
+  width: 60px;
+  height: 40px;
+  background-color: #00000000;
+  border: none;
+}
+
+.goBack {
+  z-index: 5;
+  position: fixed;
+  font-size: 45px;
+  top: 0.5em;
+  left: 0.5em;
+  border-radius: 50%;
+  padding: 10px 10px;
+  border: none;
+  background-color: var(--accent);
+}
+.goBack:hover,
+.goBack:focus {
+  visibility: visible;
+  outline: none;
+  box-shadow: 0 0 10px var(--accent);
+}
+
+@media (max-width: 1300px) {
+  .buttons > * {
+    visibility: hidden;
+  }
+  .buttons:hover > * {
+    visibility: hidden;
+  }
+  .goBack {
+    visibility: visible;
+    top: 90vh;
+    left: 0.5em;
+    border-radius: 50%;
+    padding: 5px 5px;
+    border: none;
+    background-color: var(--accent);
+  }
+}
