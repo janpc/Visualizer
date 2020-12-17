@@ -2,6 +2,7 @@ var mySong = "Disclosure feat. Eliza Dolittle - You and Me (Flume Remix)";
 var myAudio = new Audio(
   "music/Disclosure feat. Eliza Dolittle - You and Me (Flume Remix).mp3"
 );
+var selected="";
 var musicArray = myMusic;
 var isPlaying = false;
 var areShuled = false;
@@ -109,6 +110,9 @@ function printInMain(songs) {
     >${song}</button>`;
   });
   musicResults.innerHTML = buttons;
+  if(songs.indexOf(selected)>0){
+    document.getElementById(selected).style.backgroundColor='var(--accent)';
+  }
 }
 
 //to do print songs in visulizer
@@ -120,8 +124,9 @@ musicResults.addEventListener("click", getSong);
 function getSong(event) {
   if(event.target!=musicResults){
     document.getElementById(mySong).style.backgroundColor='var(--dark)';
-  changeSong(event.target.title);
-  event.target.style.backgroundColor='var(--accent)';
+    changeSong(event.target.title);
+    selected=event.target.title;
+    event.target.style.backgroundColor='var(--accent)';
   }
 }
 

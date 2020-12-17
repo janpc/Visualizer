@@ -53,6 +53,15 @@ body {
   border: none;
   margin: 0 0.2em;
 }
+
+.musicButtons:hover{
+  outline:none;
+  color:var(--accent);
+}
+.musicButtons:focus{
+  outline:none;
+  color:var(--neutral);
+}
 .slider:hover {
   opacity: 1;
 }

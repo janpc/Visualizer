@@ -36,5 +36,8 @@ function changePage(){
         document.getElementById('mainPage').classList.add('active');
         document.querySelector(':root').style.setProperty('--dark', '#1d283e');
         page='mainPage';
+        if(isPlaying){
+            playMusic();
+        }
     }
 }
