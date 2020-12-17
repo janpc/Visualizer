@@ -132,8 +132,10 @@ input[type="color"]::-webkit-color-swatch {
 }
 .songItem:focus,
 .songItem:hover {
+  outline: none;
   box-shadow: 0 0 10px var(--light);
   border: none;
+  background-color: var(--accent);
 }
 .mainPage
   > .selectSong
@@ -360,6 +362,7 @@ input[type="color"]::-webkit-color-swatch {
   .selectAnimation .colorsMain > *:focus {
     box-shadow: 0 0 10px var(--light);
     border: none;
+    outline:none;
   }
 }
 

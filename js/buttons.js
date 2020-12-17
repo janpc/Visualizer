@@ -24,11 +24,8 @@ let startVisualizerButton=document.getElementById("startVisualizerButton");
 let goBack=document.getElementById('goBack');
 startVisualizerButton.addEventListener('click', changePage);
 goBack.addEventListener('click', changePage);
-let bottomButtons=document.getElementById('buttonsBottom');
-bottomButtons.addEventListener('click', bottomFunctions);
 
 function changePage(){
-    console.log(goBack)
     if(page=='mainPage'){
         document.getElementById('mainPage').classList.remove('active');
         document.getElementById('visualizerPage').classList.add('active');
@@ -40,8 +37,4 @@ function changePage(){
         document.querySelector(':root').style.setProperty('--dark', '#1d283e');
         page='mainPage';
     }
-}
-
-function bottomFunctions(event){
-    console.log(event.target.id);
 }
