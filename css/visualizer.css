@@ -87,7 +87,7 @@ body {
 }
 .buttons__top > #colors > input[type="color"] {
   width: 60px;
-  height: 40px;
+  height: 30px;
   background-color: #00000000;
 }
 .animationsVisualizer {
@@ -98,9 +98,9 @@ body {
 }
 .addColorVisualizer {
   padding: 0;
-  font-size: 40px;
+  font-size: 30px;
   width: 60px;
-  height: 40px;
+  height: 30px;
   background-color: #00000000;
   border: none;
 }
@@ -124,15 +124,58 @@ body {
 }
 
 @media (max-width: 1300px) {
+    .visualizerPage{
+        overflow: hidden;
+        width:99vw;
+        height: 99vh;
+    }
   .buttons > * {
     visibility: hidden;
   }
   .buttons:hover > * {
     visibility: hidden;
   }
+  .buttons__top{
+      display:none;
+  }
+  .buttons__bottom{
+      visibility: visible;
+      width: 100vw;
+      top:85vh;
+      justify-content: center;
+      margin:0;
+  }
+  .buttons__bottom:hover,
+  .buttons__bottom:focus{
+    visibility: visible;
+    opacity:100%;
+
+  }
+  .slider {
+    visibility: visible;
+    opacity:100%;
+    
+  }
+  .slidecontainer{
+    visibility: visible;
+    opacity:100%; 
+    width: 80vw;
+  }
+
+  .buttons__bottom:hover>*{
+    visibility: visible;
+    opacity:100%;
+  }
+  .musicButtons {
+    opacity:100%;
+    visibility: visible;
+    font-size: 36px;
+    width:44px;
+    height: 44px;
+}
   .goBack {
     visibility: visible;
-    top: 90vh;
+    top: 0.5em;
     left: 0.5em;
     border-radius: 50%;
     padding: 5px 5px;
