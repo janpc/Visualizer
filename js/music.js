@@ -175,3 +175,17 @@ function searchMain(event) {
   let match = searchSong(event.target.value, myMusic);
   printInMain(match);
 }
+
+//-------------------------------------------------------fullscreen-------------------------------------
+let   fullscreenButton=document.getElementById('fullscreenButton');
+fullscreenButton.addEventListener('click', fullscreen);
+
+function fullscreen() {
+  if (canvas.webkitRequestFullScreen) {
+    canvas.webkitRequestFullScreen();
+  } else {
+    canvas.mozRequestFullScreen();
+  }
+  canvas.height = window.innerHeight;
+  canvas.width = window.innerWidth;
+}

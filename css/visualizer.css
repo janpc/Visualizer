@@ -30,11 +30,13 @@ body {
 }
 /*-----------------------------------Buttons Bottom----------------------------*/
 .buttons__bottom {
+  
   position: fixed;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  bottom:3em;
+  bottom:0em;
+  padding-bottom: 3em;
 }
 .slidecontainer {
   width: 100%;
@@ -160,6 +162,7 @@ body {
       display:none;
   }
   .buttons__bottom{
+    background-image:linear-gradient(#0000, black);
       visibility: visible;
       width: 100vw;
       justify-content: center;
@@ -185,6 +188,9 @@ body {
   .buttons__bottom>*{
     visibility: visible;
     opacity:100%;
+  }
+  .fullscreen{
+    display:none;
   }
   .buttons__bottom:hover>*{
     visibility: visible;

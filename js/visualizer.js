@@ -1,39 +1,38 @@
-var canvas= document.getElementById("analyser_render"),
+var canvas= document.getElementById("canvas"),
   ctx,
-  source,
-  context,
   analyser,
   bars,
-  bar_x,
-  bar_width,
-  bar_height,
   myAudio,
   hasStarted = false,
   iteration=0;
 
+  
 window.onload = function () {
-    makeCanvasFullArea()
+    makeCanvasFullArea();
 };
+
+window.onresize=function(){
+    makeCanvasFullArea();
+}
 
 function makeCanvasFullArea(){
     canvas.height = window.innerHeight;
     canvas.width = window.innerWidth;
 }
 function start() {
-    context = new (window.AudioContext || window.webkitAudioContext)(); // AudioContext object instance
-    console.log(context)
+    let context = new (window.AudioContext || window.webkitAudioContext)(); // AudioContext object instance
     //colors.push(colors[0]);
     //increment=0;
-    initializeAnimation();
+    initializeAnimation(context);
   }
 
-function initializeAnimation() {
-  analyser = context.createAnalyser(); // AnalyserNode method
+function initializeAnimation(context) {
+analyser = context.createAnalyser(); // AnalyserNode method
   ctx = canvas.getContext("2d");
-  source = context.createMediaElementSource(myAudio);
+  let source = context.createMediaElementSource(myAudio);
   source.connect(analyser);
   analyser.connect(context.destination);
-  frameLooper(analyser);
+  frameLooper();
 }
 
 function frameLooper() {
