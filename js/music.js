@@ -43,6 +43,10 @@ slider.addEventListener("input", changeTime);
 function changeTime() {
   myAudio.currentTime = (this.value * myAudio.duration) / 1000;
 }
+function changeSligerValue(value){
+  let slider = document.getElementById("timeRange");
+  slider.value=value;
+}
 
 //-------------------------------------------------------------Next/Previous-----------------------------------------------------------//
 var nextButton = document.getElementById("nextButton");
@@ -68,6 +72,7 @@ function nextPreviousSong(event) {
     }
   }
   changeSong(musicArray[index]);
+  changeSligerValue(0);
   myAudio.addEventListener("ended", nextPreviousSong);
   //start();
 }

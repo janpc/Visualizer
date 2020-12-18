@@ -36,28 +36,26 @@ analyser = context.createAnalyser(); // AnalyserNode method
 }
 
 function frameLooper() {
-    let fbc_array;
     window.requestAnimationFrame(frameLooper);
 
-  slider.value = (myAudio.currentTime / myAudio.duration) * 1000; // change slider value to follow the song time
-  fbc_array = new Uint8Array(analyser.frequencyBinCount);  // creates a Uint8Array with the same length as the frequencyBinCount
-  analyser.getByteFrequencyData(fbc_array); // fill the Uint8Array with data returned from getByteFrequencyData()
+  changeSligerValue((myAudio.currentTime / myAudio.duration) * 1000); // change slider value to follow the song time
+
+  let frequencyArray=createFrequencyArray();
 
   ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas
-  ctx.fillStyle = "#FF0000"; // Color of the bars
-  const divs = 100;
+
   var bars = 5;
-  for(var i=0; i<divs;i++){
-      ctx.fillStyle = calculateColor(i,fbc_array[i]/255,1);
+  for(var i=0; i<100;i++){
+      ctx.fillStyle = calculateColor(i,frequencyArray[i]/255,1);
       ctx.fillRect(0, (canvas.height*i)/100, canvas.width,  canvas.height/(100));
-    }
+}
   //show(fbc_array, divs, bars);
-  //iteration++;
-  /*for(var j=0; j<bars;j++){
-      color = calculateColor(((i*bars)+j), incrementDiference(incrementDiference(fbc_array[i])*255), bars);
-      ctx.fillStyle = color;
-      ctx.fillRect(0, (canvas.height*i)/(100)+j*(canvas.height/(100*bars)), canvas.width,  canvas.height/(100*bars));
-    }*/
+}
+
+function createFrequencyArray(){
+    let fArray= new Uint8Array(analyser.frequencyBinCount);  // creates a Uint8Array with the same length as the frequencyBinCount
+    analyser.getByteFrequencyData(fbc_array); // fill the Uint8Array with data returned from getByteFrequencyData()
+    return fArray;
 }
 
 function incrementDiference(n) {
