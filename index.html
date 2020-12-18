@@ -17,6 +17,7 @@
     </head>
     <link rel="stylesheet" href="css/mainPage.css" />
     <link rel="stylesheet" href="css/visualizer.css" />
+    <link rel="stylesheet" href="css/animations.css" />
     <title>Visualizer</title>
   </head>
   <body class="visualizer" id="visualizer">
@@ -239,35 +240,35 @@
         <div id="colors">
           <button
             type="button"
-            class="material-icons addColorVisualizer shadow clickable"
+            class="material-icons addColorVisualizer clickable"
             id="removeColorVisualizer"
           >
             remove
           </button>
           <input
             type="color"
-            class="clickable"
+            class="clickable shadow"
             id="color-0"
             name="favcolor"
             value="#ff0000"
           />
           <input
             type="color"
-            class="clickable"
+            class="clickable shadow"
             id="color-1"
             name="favcolor"
             value="#00ff00"
           />
           <input
             type="color"
-            class="clickable"
+            class="clickable shadow"
             id="color-2"
             name="favcolor"
             value="#0000ff"
           />
           <button
             type="button"
-            class="material-icons addColorVisualizer shadow clickable"
+            class="material-icons addColorVisualizer clickable"
             id="addColorVisualizer"
           >
             add
@@ -286,6 +287,7 @@
         </select>
       </section>
       <section class="buttons buttons__bottom" id="buttonsBottom">
+        <div class='songTitleDiv'><h3 id='songTitle'>Disclosure feat. Eliza Dolittle - You and Me (Flume Remix)</h3></div>
         <button type="button" class="material-icons musicButtons clickable" id='shuffleButton'>
           shuffle
         </button>
@@ -316,5 +318,6 @@
     <script src="js/data.js"></script>
     <script src="js/music.js"></script>
     <script src="js/buttons.js"></script>
+    <script src="js/visualizer.js"></script>
   </body>
 </html>

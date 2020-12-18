@@ -109,6 +109,9 @@ input[type="color"]::-webkit-color-swatch {
   > .contentAndAnimation
   > .musicResults {
   padding: 5px 10px;
+  height: 60vw;
+  margin-bottom: 1em;
+  overflow-y: scroll;
 }
 .mainPage
   > .selectSong
@@ -123,7 +126,7 @@ input[type="color"]::-webkit-color-swatch {
   border: none;
   border-radius: 10px;
   margin: 5px 0;
-  padding: 0 1em;
+  padding: 0 0.5em;
   width: 100%;
   height: 44px;
   white-space: nowrap;
@@ -214,7 +217,6 @@ input[type="color"]::-webkit-color-swatch {
     margin: 0 10vw;
   }
   .startVisualizerButton {
-
     bottom: 1em;
     right: 1em;
     font-size: 65px;
@@ -243,7 +245,11 @@ input[type="color"]::-webkit-color-swatch {
     display: block;
     width: 50%;
   }
-  .musicResults {
+  .mainPage
+    > .selectSong
+    > .sectionContent
+    > .contentAndAnimation
+    > .musicResults {
     width: 50%;
     height: 30vw;
     margin-bottom: 1em;
@@ -268,10 +274,6 @@ input[type="color"]::-webkit-color-swatch {
     margin: 5px 0;
     padding: 0 1em;
     width: 80%;
-  }
-
-  .musicAnimationSVG {
-    animation: spin 10s linear infinite;
   }
 
   .selectSongSearch {
@@ -318,42 +320,6 @@ input[type="color"]::-webkit-color-swatch {
     background: var(--neutral);
   }
 
-  .circle6 {
-    position: absolute;
-    height: 0vw;
-    width: 0vw;
-    animation: up 3s 0s ease-in-out infinite alternate;
-  }
-  .circle1 {
-    position: absolute;
-    height: 0vw;
-    width: 0vw;
-    animation: up 3s 0.5s linear infinite alternate;
-  }
-  .circle2 {
-    position: absolute;
-    height: 0vw;
-    width: 0vw;
-    animation: up 3s 1s ease-out infinite alternate;
-  }
-  .circle3 {
-    position: absolute;
-    height: 0vw;
-    width: 0vw;
-    animation: up 3s 1.5s ease-in infinite alternate;
-  }
-  .circle4 {
-    position: absolute;
-    height: 0vw;
-    width: 0vw;
-    animation: up 3s 2s linear infinite alternate;
-  }
-  .circle5 {
-    position: absolute;
-    height: 0vw;
-    width: 0vw;
-    animation: up 3s 2.5s ease-in-out infinite alternate;
-  }
   .selectAnimation > .sectionContent > .contentAndAnimation > div > input,
   .selectAnimation > .sectionContent > .contentAndAnimation > div > select {
     margin: 20px 0;
@@ -362,45 +328,10 @@ input[type="color"]::-webkit-color-swatch {
   .selectAnimation .colorsMain > *:focus {
     box-shadow: 0 0 10px var(--light);
     border: none;
-    outline:none;
+    outline: none;
   }
 }
 
 .active {
   display: block;
-}
-
-@-moz-keyframes spin {
-  100% {
-    -moz-transform: rotate(360deg);
-  }
-}
-@-webkit-keyframes spin {
-  100% {
-    -webkit-transform: rotate(360deg);
-  }
-}
-@keyframes spin {
-  100% {
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes up {
-  0% {
-    left: 70vw;
-    margin-top: 15vw;
-    height: 0vw;
-    width: 0vw;
-    fill: var(--neutral);
-  }
-
-  100% {
-    left: 55vw;
-    margin-top: 0vw;
-    height: 30vw;
-    width: 30vw;
-    fill: var(--light);
-  }
 }

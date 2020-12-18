@@ -6,9 +6,12 @@ var selected="";
 var musicArray = myMusic;
 var isPlaying = false;
 var areShuled = false;
+var hasStarted=false;
 
 const musicResults = document.querySelector(".musicResults");
 const musicSearchMain = document.getElementById("musicSearchMain");
+
+
 //-----------------------------------------------------------on load functions----------------------------------------------//
 printInMain(myMusic);
 
@@ -24,7 +27,13 @@ function playMusic() {
     myAudio.play();
     playButton.innerHTML = "pause";
     isPlaying = true;
+    if (!hasStarted) {
+      console.log('hola')
+      hasStarted = true;
+      start();
+    }
   }
+  
 }
 
 //-------------------------------------------------------------Slider-----------------------------------------------------------//
@@ -59,6 +68,8 @@ function nextPreviousSong(event) {
     }
   }
   changeSong(musicArray[index]);
+  myAudio.addEventListener("ended", nextPreviousSong);
+  //start();
 }
 
 //-------------------------------------------------------------Change Song-----------------------------------------------------------//
@@ -66,9 +77,17 @@ function changeSong(song) {
   myAudio.pause();
   mySong = song;
   myAudio = new Audio("music/" + song + ".mp3");
+  changeSongTitle(song);
   if (isPlaying) {
     myAudio.play();
   }
+  start();
+}
+
+//------------------------------------------------------------Change Song In Visualizer------------------------------------------//
+function changeSongTitle(song){
+  let songTitle=document.getElementById('songTitle');
+  songTitle.innerHTML=song;
 }
 
 //-------------------------------------------------------------Shuffle-----------------------------------------------------------//
@@ -123,7 +142,9 @@ musicResults.addEventListener("click", getSong);
 
 function getSong(event) {
   if(event.target!=musicResults){
-    document.getElementById(mySong).style.backgroundColor='var(--dark)';
+    if(document.getElementById(mySong)){
+      document.getElementById(mySong).style.backgroundColor='var(--dark)';
+    }
     changeSong(event.target.title);
     selected=event.target.title;
     event.target.style.backgroundColor='var(--accent)';
@@ -141,9 +162,9 @@ function searchSong(parameter, songs) {
   );
 
   filtered.sort((a, b) => {
-    positionA = a.indexOf(parameter);
-    positionB = b.indexOf(parameter);
-    return a - b;
+    positionA = a.toLowerCase().indexOf(parameter.toLowerCase());
+    positionB = b.toLowerCase().indexOf(parameter.toLowerCase());
+    return positionA - positionB;
   });
   return filtered;
 }
