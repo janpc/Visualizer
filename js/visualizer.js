@@ -21,6 +21,7 @@ function makeCanvasFullArea() {
   canvas.width = window.innerWidth;
 }
 function start() {
+  hasStarted=true;
   let context = new (window.AudioContext || window.webkitAudioContext)(); // AudioContext object instance
   if(colors[0]!=colors[colors.length-1]){
     colors.push(colors[0]);

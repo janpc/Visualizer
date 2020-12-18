@@ -2,7 +2,7 @@ var canEnter = true;
 var maxDistance;
 wantAugment = true;
 var randomArray = [];
-var myAnimation = "Vertical Lines";
+var myAnimation = "Expand Circles";
 const myAnimations = [
   "Show squares",
   "Show Expand Square",
@@ -36,7 +36,7 @@ randomArray = getRandomNumbers(100);
 
 function animate(ctx, fArray, bars) {
   ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas
-  moveColor(fArray, 0.1);
+  moveColor(fArray, 0.5);
   animations[myAnimation].execute(ctx, fArray, 5);
 }
 
@@ -275,15 +275,6 @@ function calculateColor(n, sat, bars) {
     }
   });
   return "rgb(" + r * sat + "," + g * sat + "," + b * sat + ")";
-}
-function randomArray(array) {
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * i);
-    const temp = array[i];
-    array[i] = array[j];
-    array[j] = temp;
-  }
-  return array;
 }
 
 function getRandomNumbers(n) {

@@ -81,6 +81,7 @@ function nextPreviousSong(event) {
 function changeSong(song) {
   myAudio.pause();
   mySong = song;
+  selected=song;
   myAudio = new Audio("music/" + song + ".mp3");
   changeSongTitle(song);
   if (isPlaying) {
@@ -95,6 +96,17 @@ function changeSongTitle(song){
   songTitle.innerHTML=song;
 }
 
+//-----------------------------------------------------random array-----------------------------------//
+function randomizeArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * i);
+    const temp = array[i];
+    array[i] = array[j];
+    array[j] = temp;
+  }
+  return array;
+}
+
 //-------------------------------------------------------------Shuffle-----------------------------------------------------------//
 
 var shuffleButton = document.getElementById("shuffleButton");
@@ -105,25 +117,16 @@ function suffleSongs() {
     shuffleButton.style.color = "var(--light)";
     areShuled = false;
   } else {
-    musicArray = randomArray([...myMusic]);
+    musicArray = randomizeArray([...myMusic]);
     shuffleButton.style.color = "var(--accent)";
     areShuled = true;
   }
-}
-//-----------------------------------------------------random array-----------------------------------
-function randomArray(array) {
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * i);
-    const temp = array[i];
-    array[i] = array[j];
-    array[j] = temp;
-  }
-  return array;
 }
 
 //-----------------------------------------------print songs--------------------------------------------
 
 function printInMain(songs) {
+  console.log('h')
   var buttons = "";
   songs.forEach((song) => {
     buttons += `  <button
