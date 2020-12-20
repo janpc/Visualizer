@@ -2,7 +2,7 @@ var canEnter = true;
 var maxDistance;
 wantAugment = true;
 var randomArray = [];
-var myAnimation = "Grid";
+var myAnimation = "Arcs";
 
 var colors = [
   hex_to_RGB("#ff0000"),
@@ -65,7 +65,7 @@ randomArray = getRandomNumbers(100);
 
 function animate(ctx, fArray, bars) {
   ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas
-  moveColor(fArray, 0.1);
+  moveColor(fArray, 2);
   if(myAnimation=='Grid'){
     bars=Math.floor(Math.sqrt(100*bars))
   }
@@ -318,7 +318,7 @@ function showGrid2(ctx, fArray, n) {
     mainIteration++;
   }
   function paintSquare() {
-    color = calculateColor((i/(n*n))*100, fArray[(i/(n*n))*100]/255, 1);
+    color = calculateColor(i, incrementDiference(fArray[randomArray[(i/(n*n))*100]]), n*n/100);
     ctx.fillStyle = color;
     ctx.fillRect(
       (x * canvas.width) / n,
@@ -345,35 +345,25 @@ function hex_to_RGB(hex) {
 
 function calculateColor(n, sat, bars) {
   let a = iteration % (100 * bars);
-  n = ((bars * 100 + n - a) % (100 * bars)) / (100 * bars);
-  var r = 0,
-    g = 0,
-    b = 0,
-    length = colors.length;
+  n = ((bars * 100 + n - a) % (100 * bars)) / (100 * bars); // convert from 0-(100*bars) to 0-1 range and adding the movement.
+  var r = 0, g = 0, b = 0, length = colors.length;
   colors.forEach((color, i) => {
     i = length - i - 1;
     if (n >= (i - 1) / (length - 1) && n <= (i + 1) / (length - 1)) {
-      r +=
-        -1 *
-        (length - 1) ** 2 *
-        (n - (i - 1) / (length - 1)) *
-        (n - (i + 1) / (length - 1)) *
-        color.r;
-      g +=
-        -1 *
-        (length - 1) ** 2 *
-        (n - (i - 1) / (length - 1)) *
-        (n - (i + 1) / (length - 1)) *
-        color.g;
-      b +=
-        -1 *
-        (length - 1) ** 2 *
-        (n - (i - 1) / (length - 1)) *
-        (n - (i + 1) / (length - 1)) *
-        color.b;
+      r +=colorFunction(i, color.r);
+      g +=colorFunction(i, color.g);
+      b +=colorFunction(i, color.b);
     }
+    
   });
-  return "rgba(" + r * sat + "," + g * sat + "," + b * sat + "," + sat + ")";
+  let result="rgba(" + r * sat + "," + g * sat + "," + b * sat + "," + sat + ")"
+  return result;
+
+  function colorFunction(index, color){
+    let numberOfColors=length - 1;
+    let result=-1 * (numberOfColors) ** 2 * (n - (index - 1) / (numberOfColors)) * (n - (index + 1) / (numberOfColors)) * color;
+    return result;
+  }
 }
 
 function getRandomNumbers(n) {
