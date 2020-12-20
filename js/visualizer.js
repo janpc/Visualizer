@@ -1,5 +1,6 @@
 var canvas = document.getElementById("canvas"),
   ctx,
+  context,
   analyser,
   bars,
   myAudio,
@@ -22,7 +23,10 @@ function makeCanvasFullArea() {
 }
 function start() {
   hasStarted=true;
-  let context = new (window.AudioContext || window.webkitAudioContext)(); // AudioContext object instance
+  if(context){
+    context.close();
+  }
+  context = new (window.AudioContext || window.webkitAudioContext)(); // AudioContext object instance
   if(colors[0]!=colors[colors.length-1]){
     colors.push(colors[0]);
   }
@@ -47,7 +51,7 @@ function frameLooper() {
   let frequencyArray = createFrequencyArray();
 
   
-  animate(ctx,frequencyArray, 1);
+  animate(ctx,frequencyArray, 26);
 }
 
 function createFrequencyArray() {

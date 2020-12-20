@@ -2,33 +2,62 @@ var canEnter = true;
 var maxDistance;
 wantAugment = true;
 var randomArray = [];
-var myAnimation = "Expand Circles";
-const myAnimations = [
-  "Show squares",
-  "Show Expand Square",
-  "Show Circles",
-  "Show Arcs",
-  "Show Pad",
-];
+var myAnimation = "Grid";
+
 var colors = [
-    hex_to_RGB("#ff0000"),
-    hex_to_RGB("#00ff00"),
-    hex_to_RGB("#0000ff"),
-  ];
+  hex_to_RGB("#ff0000"),
+  hex_to_RGB("#00ff00"),
+  hex_to_RGB("#0000ff"),
+];
 var animations = {
   "Horizontal Lines": {
     execute(ctx, fArray, bars) {
       showHorizontalLines(ctx, fArray, bars);
     },
   },
-  "Vertical Lines":{
+  "Expand Horizontal Lines": {
     execute(ctx, fArray, bars) {
-        showVerticalLines(ctx, fArray, bars);
-      },
+      showExpandHorizontalLines(ctx, fArray, bars);
+    },
+  },
+  "Vertical Lines": {
+    execute(ctx, fArray, bars) {
+      showVerticalLines(ctx, fArray, bars);
+    },
+  },
+  "Expand Vertical Lines": {
+    execute(ctx, fArray, bars) {
+      showExpandVerticalLines(ctx, fArray, bars);
+    },
   },
   "Expand Circles": {
     execute(ctx, fArray, bars) {
       showExpandCircles(ctx, fArray, bars);
+    },
+  },
+  Circles: {
+    execute(ctx, fArray, bars) {
+      showCircles(ctx, fArray, bars);
+    },
+  },
+  Arcs: {
+    execute(ctx, fArray, bars) {
+      showArcs(ctx, fArray, bars);
+    },
+  },
+  "Expand Square": {
+    execute(ctx, fArray, bars) {
+      showExpandSquare(ctx, fArray, bars);
+    },
+  },
+  Square: {
+    execute(ctx, fArray, bars) {
+      showSquare(ctx, fArray, bars);
+    },
+  },
+  Grid: {
+    execute(ctx, fArray, bars) {
+      showGrid2(ctx, fArray, bars);
     },
   },
 };
@@ -36,8 +65,11 @@ randomArray = getRandomNumbers(100);
 
 function animate(ctx, fArray, bars) {
   ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas
-  moveColor(fArray, 0.5);
-  animations[myAnimation].execute(ctx, fArray, 5);
+  moveColor(fArray, 0.1);
+  if(myAnimation=='Grid'){
+    bars=Math.floor(Math.sqrt(100*bars))
+  }
+  animations[myAnimation].execute(ctx, fArray, bars);
 }
 
 function showHorizontalLines(ctx, fArray, bars) {
@@ -51,25 +83,46 @@ function showHorizontalLines(ctx, fArray, bars) {
     );
   }
 }
-function showVerticalLines(ctx, fArray, bars) {
-    for (var i = 0; i < 100; i++) {
-      ctx.fillStyle = calculateColor(i, fArray[i] / 255, 1);
-      ctx.fillRect(
-        (canvas.width * i) / 100,
-        0,
-        canvas.width/ 100,
-        canvas.height 
-      );
-    }
+function showExpandHorizontalLines(ctx, fArray, bars) {
+  for (var i = 0; i < 100; i++) {
+    ctx.fillStyle = calculateColor(i, fArray[i] / 255, 1);
+    ctx.fillRect(
+      0,
+      (canvas.height * i) / 100,
+      (fArray[i] * canvas.width) / 255,
+      canvas.height / 100
+    );
   }
-
+}
+function showExpandVerticalLines(ctx, fArray, bars) {
+  for (var i = 0; i < 100; i++) {
+    ctx.fillStyle = calculateColor(i, fArray[i] / 255, 1);
+    ctx.fillRect(
+      (canvas.width * i) / 100,
+      canvas.height,
+      canvas.width / 100,
+      (-1 * fArray[i] * canvas.height) / 255
+    );
+  }
+}
+function showVerticalLines(ctx, fArray, bars) {
+  for (var i = 0; i < 100; i++) {
+    ctx.fillStyle = calculateColor(i, fArray[i] / 255, 1);
+    ctx.fillRect(
+      (canvas.width * i) / 100,
+      0,
+      canvas.width / 100,
+      canvas.height
+    );
+  }
+}
 function showExpandCircles(ctx, fArray, bars) {
   for (var i = 100 - 1; i >= 0; i--) {
     let augm = 1;
     if (wantAugment) {
       augm = calculateAugment(fArray, i);
     }
-    
+
     for (var j = 0; j < bars; j++) {
       color = calculateColor(i * bars + j, incrementDiference(fArray[i]), bars);
       ctx.beginPath();
@@ -86,44 +139,45 @@ function showExpandCircles(ctx, fArray, bars) {
     }
   }
 }
-function showCircles(fArray, divs, bars) {
-  var maxDistance = Math.sqrt(canvas.width ** 2 + canvas.height ** 2);
-
-  for (var i = 0; i < divs; i++) {
-    if (fArray[1] > 200 && canEnter && i == 1) {
-      iteration += (fArray[1] - 200) / 5;
-      canEnter = false;
-    } else {
-      canEnter = true;
-    }
+function showCircles(ctx, fArray, bars) {
+  for (var i = 99; i > -1; i--) {
     for (var j = 0; j < bars; j++) {
-      color = calculateColor(
-        i * bars + j,
-        incrementDiference(incrementDiference(fArray[i]) * 255),
-        bars
-      );
+      color = calculateColor(i * bars + j, incrementDiference(fArray[i]), bars);
       ctx.beginPath();
       ctx.arc(
         canvas.width / 2,
         canvas.height / 2,
-        ((i * bars + j) * maxDistance) / (2 * bars * divs),
-        0,
-        2 * Math.PI
+        ((i * bars + j) * maxDistance) / (2 * bars * 100),
+        0, //2*augm*Math.PI/255,
+        2 * Math.PI //-2*augm*Math.PI/255
+      );
+      //ctx.strokeStyle = color;
+      //ctx.stroke();
+      ctx.fillStyle = color;
+      ctx.fill();
+    }
+  }
+}
+function showArcs(ctx, fArray, bars) {
+  for (var i = 99; i > -1; i--) {
+    let augm = calculateAugment(fArray, i);
+    for (var j = 0; j < bars; j++) {
+      color = calculateColor(i * bars + j, incrementDiference(fArray[i]), bars);
+      ctx.beginPath();
+      ctx.arc(
+        canvas.width / 2,
+        canvas.height / 2,
+        ((i * bars + j) * maxDistance) / (2 * bars * 100),
+        2 * Math.PI - (2 * fArray[i] * Math.PI) / 255,
+        (2 * fArray[i] * Math.PI) / 255
       );
       ctx.strokeStyle = color;
       ctx.stroke();
     }
   }
 }
-function showExpandSquare(fArray, divs, bars) {
-  for (var i = 0; i < divs; i++) {
-    if (fArray[1] > 200 && canEnter && i == 1) {
-      iteration += bars;
-      canEnter = false;
-      console.log(canEnter);
-    } else {
-      canEnter = true;
-    }
+function showExpandSquare(ctx, fArray, bars) {
+  for (var i = 0; i < 100; i++) {
     for (var j = 0; j < bars; j++) {
       color = calculateColor(i * bars + j, incrementDiference(fArray[i]), bars);
       ctx.fillStyle = color;
@@ -136,7 +190,8 @@ function showExpandSquare(fArray, divs, bars) {
       }
       function verticalLine() {
         ctx.fillRect(
-          canvas.width / 2 +
+          canvas.width / 2 -
+            (canvas.height * 5) / (100 * bars * 2) +
             ((i % 2 != 0
               ? (canvas.width * i * -1 * incrementDiference(fArray[i]) * 1.5) /
                 2
@@ -146,7 +201,7 @@ function showExpandSquare(fArray, divs, bars) {
               100 +
             j * (canvas.width / (100 * bars)),
           0,
-          (canvas.height * incrementDiference(fArray[i])) / (divs * bars * 2),
+          (canvas.height * incrementDiference(fArray[i])) / (100 * bars * 2),
           canvas.height
         );
       }
@@ -163,19 +218,20 @@ function showExpandSquare(fArray, divs, bars) {
               100 +
             j * (canvas.height / (100 * bars)),
           canvas.width,
-          (canvas.height * incrementDiference(fArray[i])) / (divs * bars * 2)
+          (canvas.height * incrementDiference(fArray[i])) / (100 * bars * 2)
         );
       }
     }
   }
 }
-function showSquare(fArray, divs, bars) {
-  for (var i = 0; i < divs; i++) {
+function showSquare(ctx, fArray, bars) {
+  for (var i = 0; i < 100; i++) {
     for (var j = 0; j < bars; j++) {
       color = calculateColor(i * bars + j, incrementDiference(fArray[i]), bars);
       ctx.fillStyle = color;
       ctx.fillRect(
-        canvas.width / 2 +
+        canvas.width / 2 -
+          canvas.width / (100 * bars) +
           (i % 2 != 0 ? (canvas.width * i * -1) / 2 : (canvas.width * i) / 2) /
             100 +
           j * (canvas.width / (100 * bars)),
@@ -193,7 +249,8 @@ function showSquare(fArray, divs, bars) {
       ctx.fillStyle = color;
       ctx.fillRect(
         0,
-        canvas.height / 2 +
+        canvas.height / 2 -
+          canvas.height / (100 * bars) +
           (i % 2 != 0
             ? (canvas.height * i * -1) / 2
             : (canvas.height * i) / 2) /
@@ -206,7 +263,7 @@ function showSquare(fArray, divs, bars) {
   }
 }
 
-function showPad(fArray, divs, bars) {
+function showGrid(ctx, fArray, bars) {
   for (var i = 0; i < 10; i++) {
     if (fArray[1] > 200 && canEnter && i == 1) {
       iteration += (fArray[1] - 200) / 5;
@@ -231,22 +288,64 @@ function showPad(fArray, divs, bars) {
   }
 }
 
+function showGrid2(ctx, fArray, n) {
+  let x = n/2-1,
+    y = n/2-1;
+  let i = 0;
+  let mainIteration = 1;
+  paintSquare();
+  while (x != 0 || y != n-1) {
+    while (x != y) {
+      if (x < y) {
+        y--;
+      } else {
+        y++;
+      }
+      paintSquare();
+    }
+    if (mainIteration % 2 == 0) {
+      while (x > y - mainIteration && (x != 0 || y != n-1)) {
+        x--;
+        paintSquare();
+      }
+    } else {
+      while (x < y + mainIteration && (x != 0 || y != n-1)) {
+        x++;
+        paintSquare();
+      }
+    }
+    
+    mainIteration++;
+  }
+  function paintSquare() {
+    color = calculateColor((i/(n*n))*100, fArray[(i/(n*n))*100]/255, 1);
+    ctx.fillStyle = color;
+    ctx.fillRect(
+      (x * canvas.width) / n,
+      (y * canvas.height) / n,
+      canvas.width / n,
+      canvas.height / n
+    );
+    i++;
+  }
+}
+
 function incrementDiference(n) {
   n = n / 255;
   return 3 * n ** 2 - 2 * n ** 3;
 }
 function hex_to_RGB(hex) {
-    var m = hex.match(/^#?([\da-f]{2})([\da-f]{2})([\da-f]{2})$/i);
-    return {
-      r: parseInt(m[1], 16),
-      g: parseInt(m[2], 16),
-      b: parseInt(m[3], 16),
-    };
-  }
+  var m = hex.match(/^#?([\da-f]{2})([\da-f]{2})([\da-f]{2})$/i);
+  return {
+    r: parseInt(m[1], 16),
+    g: parseInt(m[2], 16),
+    b: parseInt(m[3], 16),
+  };
+}
 
 function calculateColor(n, sat, bars) {
-    let a = iteration % (100* bars);
-    n = (bars * 100 +n -a) % (100 * bars) / (100 * bars);
+  let a = iteration % (100 * bars);
+  n = ((bars * 100 + n - a) % (100 * bars)) / (100 * bars);
   var r = 0,
     g = 0,
     b = 0,
@@ -274,7 +373,7 @@ function calculateColor(n, sat, bars) {
         color.b;
     }
   });
-  return "rgb(" + r * sat + "," + g * sat + "," + b * sat + ")";
+  return "rgba(" + r * sat + "," + g * sat + "," + b * sat + "," + sat + ")";
 }
 
 function getRandomNumbers(n) {
@@ -294,20 +393,22 @@ function getRandomNumbers(n) {
 function calculateMaxDistance() {
   maxDistance = Math.sqrt(canvas.width ** 2 + canvas.height ** 2);
 }
+
 function calculateAugment(fArray, pos) {
   let augm = pos;
   let x = pos / 100;
-  if (fArray[1] > 220) {
+  augm = (((-1 * pos) / 100) * (pos / 100 - 2) * 100 * fArray[pos]) / 200;
+  /*if (fArray[1] > 220) {
     augm = (((-1 * pos) / 100) * (pos / 100 - 2) * 100 * fArray[pos]) / 200;
-  }
+  }*/
   return augm;
 }
 
-function moveColor(fArray, velocity){
-    if (fArray[1] > 200 && canEnter) {
-        iteration += velocity*(fArray[1] - 200) / 5;
-        canEnter = false;
-      } else {
-        canEnter = true;
-      }
+function moveColor(fArray, velocity) {
+  if (fArray[1] > 200 && canEnter) {
+    iteration += (velocity * (fArray[1] - 200)) / 5;
+    canEnter = false;
+  } else {
+    canEnter = true;
+  }
 }
