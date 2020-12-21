@@ -117,8 +117,11 @@ body {
 .buttons__top > * {
   margin: 5px;
 }
+.buttons__top > #colors {
+  width:100%;
+}
 .buttons__top > #colors > input[type="color"] {
-  width: 60px;
+  width: 55px;
   height: 30px;
   background-color: #00000000;
 }
@@ -131,7 +134,7 @@ body {
 .buttons__top .addColor{
   padding: 0;
   font-size: 30px;
-  width: 60px;
+  width: 55px;
   height: 30px;
   background-color: #00000000;
   border: none;
@@ -153,6 +156,16 @@ body {
   visibility: visible;
   outline: none;
   box-shadow: 0 0 10px var(--accent);
+}
+
+.containerTop{
+  width:70%;
+  display:flex;
+  flex-direction: column;
+  align-items: center;;
+}
+.containerTop>*{
+  margin:0.5em;
 }
 
 @media (max-width: 1300px) {

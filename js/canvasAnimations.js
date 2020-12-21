@@ -1,8 +1,8 @@
 var canEnter = true;
 var maxDistance;
-var wantAugment = true;
+var wantexpansionent = true;
 var bars=10;
-colorVelocity=0.5;
+var colorVelocity=0.5;
 var randomArray = [];
 var myAnimation = "Grid";
 var numberOfColors=3;
@@ -118,9 +118,9 @@ function showVerticalLines(ctx, fArray, bars) {
 }
 function showExpandCircles(ctx, fArray, bars) {
   for (var i = 100 - 1; i >= 0; i--) {
-    let augm = 1;
-    if (wantAugment) {
-      augm = calculateAugment(fArray, i);
+    let expansion = 1;
+    if (wantexpansionent) {
+      expansion = calculateExpansion(fArray, i);
     }
 
     for (var j = 0; j < bars; j++) {
@@ -129,7 +129,7 @@ function showExpandCircles(ctx, fArray, bars) {
       ctx.arc(
         canvas.width / 2,
         canvas.height / 2,
-        ((augm * bars + j) * maxDistance * incrementDiference(fArray[i])) /
+        ((expansion * bars + j) * maxDistance * incrementDiference(fArray[i])) /
           (2 * bars * 100),
         0,
         2 * Math.PI
@@ -148,8 +148,8 @@ function showCircles(ctx, fArray, bars) {
         canvas.width / 2,
         canvas.height / 2,
         ((i * bars + j) * maxDistance) / (2 * bars * 100),
-        0, //2*augm*Math.PI/255,
-        2 * Math.PI //-2*augm*Math.PI/255
+        0, //2*expansion*Math.PI/255,
+        2 * Math.PI //-2*expansion*Math.PI/255
       );
       //ctx.strokeStyle = color;
       //ctx.stroke();
@@ -160,7 +160,7 @@ function showCircles(ctx, fArray, bars) {
 }
 function showArcs(ctx, fArray, bars) {
   for (var i = 99; i > -1; i--) {
-    let augm = calculateAugment(fArray, i);
+    let expansion = calculateExpansion(fArray, i);
     for (var j = 0; j < bars; j++) {
       color = calculateColor(i * bars + j, incrementDiference(fArray[i]), bars);
       ctx.beginPath();
@@ -386,10 +386,10 @@ function calculateMaxDistance() {
   maxDistance = Math.sqrt(canvas.width ** 2 + canvas.height ** 2);
 }
 
-function calculateAugment(fArray, pos) {
-  let augm = pos;
-  augm = (((-1 * pos) / 100) * (pos / 100 - 2) * 100 * fArray[pos]) / 200;
-  return augm;
+function calculateExpansion(fArray, pos) {
+  let expansion = pos;
+  expansion = (((-1 * pos) / 100) * (pos / 100 - 2) * 100 * fArray[pos]) / 200;
+  return expansion;
 }
 
 function moveColor(fArray, velocity) {

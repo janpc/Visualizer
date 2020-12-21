@@ -76,7 +76,13 @@ input[type="color"]::-webkit-color-swatch {
   background-color: var(--smooth);
   padding-top: 10px;
   padding-block-end: 0.5em;
-  margin: 1em 0;
+  margin: 2em 0;
+}
+.animationInputs>*{
+  margin:0.5em;
+}
+.selectAnimation {
+  margin-bottom: 5em !important;
 }
 .sectionTitle > .sectionButton {
   margin: 0 auto;
@@ -331,6 +337,7 @@ input[type="color"]::-webkit-color-swatch {
     border: none;
     outline: none;
   }
+  
 }
 
 .active {

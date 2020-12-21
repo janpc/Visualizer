@@ -5,6 +5,12 @@ const animationsMain = document.getElementById("animationsMain");
 const animationsVisualizer = document.getElementById("animationsVisualizer");
 const colorsMain = document.getElementById("colorsMain");
 const colorsVisualizer = document.querySelector("#buttonsTop>#colors");
+const sliderBarsVisualizer = document.getElementById("sliderBarsVisualizer");
+const sliderBarsMain = document.getElementById("sliderBars");
+const sliderVelocityVisualizer = document.getElementById(
+  "sliderVelocityVisualizer"
+);
+const sliderVelocityMain = document.getElementById("sliderVelocity");
 let selectSongButton = document.querySelector(
   ".selectSong>.sectionTitle>.sectionButton"
 );
@@ -24,6 +30,12 @@ colorsVisualizer.addEventListener("change", changeColor);
 
 colorsMain.addEventListener("click", addRemoveColor);
 colorsVisualizer.addEventListener("click", addRemoveColor);
+
+sliderBarsVisualizer.addEventListener("change", getSliderBarsValue);
+sliderBarsMain.addEventListener("change", getSliderBarsValue);
+
+sliderVelocityVisualizer.addEventListener("change", getSliderVelocityValue);
+sliderVelocityMain.addEventListener("change", getSliderVelocityValue);
 
 function openSection(event) {
   var parent = event.target.parentNode;
@@ -48,15 +60,13 @@ function changePage() {
     document.getElementById("mainPage").classList.remove("active");
     document.getElementById("visualizerPage").classList.add("active");
     document.querySelector(":root").style.setProperty("--dark", "black");
-    printAnimations(animationsVisualizer);
-    printColors(colorsVisualizer);
+    setInputVariablesVisualizer();
     page = "visualizerPage";
   } else if (page == "visualizerPage") {
     document.getElementById("visualizerPage").classList.remove("active");
     document.getElementById("mainPage").classList.add("active");
     document.querySelector(":root").style.setProperty("--dark", "#1d283e");
-    printAnimations(animationsMain);
-    printColors(colorsMain);
+    setInputVariablesMain();
     page = "mainPage";
     printInMain(myMusic);
     if (isPlaying) {
@@ -145,36 +155,67 @@ function changeColor(event) {
   colors[event.target.id] = hex_to_RGB(event.target.value);
 }
 
+//------------------------------------------Add remove colors----------------------------
 
-function addRemoveColor(event){
-    if(event.target.id==='removeColor'){
-        removeColor(event);
-    }else if(event.target.id==='addColor'){
-        addColor(event)
-    }
+function addRemoveColor(event) {
+  if (event.target.id === "removeColor") {
+    removeColor(event);
+  } else if (event.target.id === "addColor") {
+    addColor(event);
+  }
 }
-function addColor(event){
-    let keys = Object.keys(colors);
-    if(keys.length<10){
-        let last=colors['last-color'];
-        delete colors['last-color'];
-        colors['color-'+numberOfColors]={r:0, g:0, b:0}
-        colors['last-color']=last;
-        numberOfColors++;
-    }else{
-        alert('Too many colors');
-    }
+function addColor(event) {
+  let keys = Object.keys(colors);
+  if (keys.length < 10) {
+    let last = colors["last-color"];
+    delete colors["last-color"];
+    colors["color-" + numberOfColors] = { r: 0, g: 0, b: 0 };
+    colors["last-color"] = last;
+    numberOfColors++;
+  } else {
+    alert("Too many colors");
+  }
+  printColors(event.target.parentNode);
+}
+function removeColor(event) {
+  let keys = Object.keys(colors);
+  if (keys.length > 2) {
+    delete colors[keys[0]];
+    colors["last-color"] = colors[keys[1]];
     printColors(event.target.parentNode);
+  } else {
+    alert("Can't be less than 2 colors");
+  }
 }
-function removeColor(event){
-    let keys = Object.keys(colors);
-    if(keys.length>2){
-        delete colors[keys[0]];
-        colors['last-color']=colors[keys[1]];
-        printColors(event.target.parentNode);
-    }else{
-        alert("Can't be less than 2 colors")
-    }
-    
-    
+
+//--------------------------------buttons parameters----------------------------
+
+function getSliderBarsValue(event) {
+  bars = event.target.value;
+  event.target.previousElementSibling.innerHTML = "Bars: " + bars;
+}
+
+function getSliderVelocityValue(event) {
+  colorVelocity = event.target.value / 10;
+  event.target.previousElementSibling.innerHTML = "Velocity: " + colorVelocity;
+}
+
+//---------------------------------setInputVariables------------------
+
+function setInputVariablesMain() {
+  printAnimations(animationsMain);
+  printColors(colorsMain);
+  sliderBarsMain.value = bars;
+  sliderBarsMain.previousElementSibling.innerHTML = "Bars: " + bars;
+  sliderVelocityMain.value = colorVelocity*10;
+  sliderVelocityMain.previousElementSibling.innerHTML = "Velocity: " + colorVelocity;
+}
+
+function setInputVariablesVisualizer(){
+  printAnimations(animationsVisualizer);
+  printColors(colorsVisualizer);
+  sliderBarsVisualizer.value=bars;
+  sliderBarsVisualizer.previousElementSibling.innerHTML = "Bars: " + bars;
+  sliderVelocityVisualizer.value=colorVelocity*10;
+  sliderVelocityVisualizer.previousElementSibling.innerHTML = "Velocity: " + colorVelocity;
 }
