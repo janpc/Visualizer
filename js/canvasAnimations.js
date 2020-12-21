@@ -2,7 +2,7 @@ var canEnter = true;
 var maxDistance;
 wantAugment = true;
 var randomArray = [];
-var myAnimation = "Arcs";
+var myAnimation = "Grid";
 
 var colors = [
   hex_to_RGB("#ff0000"),
@@ -57,6 +57,7 @@ var animations = {
   },
   Grid: {
     execute(ctx, fArray, bars) {
+      bars=Math.floor(bars/10)*10+10;
       showGrid2(ctx, fArray, bars);
     },
   },
@@ -65,10 +66,7 @@ randomArray = getRandomNumbers(100);
 
 function animate(ctx, fArray, bars) {
   ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas
-  moveColor(fArray, 2);
-  if(myAnimation=='Grid'){
-    bars=Math.floor(Math.sqrt(100*bars))
-  }
+  moveColor(fArray, 0.5);
   animations[myAnimation].execute(ctx, fArray, bars);
 }
 
@@ -386,16 +384,12 @@ function calculateMaxDistance() {
 
 function calculateAugment(fArray, pos) {
   let augm = pos;
-  let x = pos / 100;
   augm = (((-1 * pos) / 100) * (pos / 100 - 2) * 100 * fArray[pos]) / 200;
-  /*if (fArray[1] > 220) {
-    augm = (((-1 * pos) / 100) * (pos / 100 - 2) * 100 * fArray[pos]) / 200;
-  }*/
   return augm;
 }
 
 function moveColor(fArray, velocity) {
-  if (fArray[1] > 200 && canEnter) {
+  if (fArray[2] > 200 && canEnter) {
     iteration += (velocity * (fArray[1] - 200)) / 5;
     canEnter = false;
   } else {

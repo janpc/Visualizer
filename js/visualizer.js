@@ -2,10 +2,20 @@ var canvas = document.getElementById("canvas"),
   ctx,
   context,
   analyser,
+  animationFrame,
   bars,
   myAudio,
   hasStarted = false,
   iteration = 0;
+
+var requestAnimationFrame =
+  window.requestAnimationFrame ||
+  window.mozRequestAnimationFrame ||
+  window.webkitRequestAnimationFrame ||
+  window.msRequestAnimationFrame;
+
+var cancelAnimationFrame =
+  window.cancelAnimationFrame || window.mozCancelAnimationFrame;
 
 window.onload = function () {
   makeCanvasFullArea();
@@ -21,16 +31,19 @@ function makeCanvasFullArea() {
   canvas.height = window.innerHeight;
   canvas.width = window.innerWidth;
 }
-function start() {
-  hasStarted=true;
-  if(context){
+function startAnimation() {
+  hasStarted = true;
+  if (context) {
     context.close();
   }
   context = new (window.AudioContext || window.webkitAudioContext)(); // AudioContext object instance
-  if(colors[0]!=colors[colors.length-1]){
+  if (colors[0] != colors[colors.length - 1]) {
     colors.push(colors[0]);
   }
-  increment=0;
+  if(animationFrame){
+    cancelAnimationFrame(animationFrame);
+    console.log(animationFrame);
+  }
   initializeAnimation(context);
 }
 
@@ -44,14 +57,14 @@ function initializeAnimation(context) {
 }
 
 function frameLooper() {
-  window.requestAnimationFrame(frameLooper);
-
+  if(isPlaying){
+    animationFrame = requestAnimationFrame(frameLooper);
+  }
   changeSligerValue((myAudio.currentTime / myAudio.duration) * 1000); // change slider value to follow the song time
 
   let frequencyArray = createFrequencyArray();
 
-  
-  animate(ctx,frequencyArray, 26);
+  animate(ctx, frequencyArray, 36);
 }
 
 function createFrequencyArray() {

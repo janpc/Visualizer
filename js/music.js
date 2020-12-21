@@ -28,9 +28,10 @@ function playMusic() {
     playButton.innerHTML = "pause";
     isPlaying = true;
     if (!hasStarted) {
-      console.log('hola')
       hasStarted = true;
-      start();
+      startAnimation();
+    }else{
+      frameLooper();
     }
   }
   
@@ -74,7 +75,7 @@ function nextPreviousSong(event) {
   changeSong(musicArray[index]);
   changeSligerValue(0);
   myAudio.addEventListener("ended", nextPreviousSong);
-  //start();
+  //startAnimation();
 }
 
 //-------------------------------------------------------------Change Song-----------------------------------------------------------//
@@ -87,7 +88,7 @@ function changeSong(song) {
   if (isPlaying) {
     myAudio.play();
   }
-  start();
+  startAnimation();
 }
 
 //------------------------------------------------------------Change Song In Visualizer------------------------------------------//
@@ -126,7 +127,6 @@ function suffleSongs() {
 //-----------------------------------------------print songs--------------------------------------------
 
 function printInMain(songs) {
-  console.log('h')
   var buttons = "";
   songs.forEach((song) => {
     buttons += `  <button
