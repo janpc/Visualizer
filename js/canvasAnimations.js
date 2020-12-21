@@ -1,11 +1,11 @@
 var canEnter = true;
 var maxDistance;
-var wantexpansionent = true;
 var bars=10;
 var colorVelocity=0.5;
 var randomArray = [];
 var myAnimation = "Grid";
 var numberOfColors=3;
+var keyframes={};
 var colors = {
   'color-0': hex_to_RGB("#ff0000"),
   'color-1': hex_to_RGB("#00ff00"),
@@ -118,10 +118,8 @@ function showVerticalLines(ctx, fArray, bars) {
 }
 function showExpandCircles(ctx, fArray, bars) {
   for (var i = 100 - 1; i >= 0; i--) {
-    let expansion = 1;
-    if (wantexpansionent) {
-      expansion = calculateExpansion(fArray, i);
-    }
+    let expansion = calculateExpansion(fArray, i);
+  
 
     for (var j = 0; j < bars; j++) {
       color = calculateColor(i * bars + j, incrementDiference(fArray[i]), bars);
