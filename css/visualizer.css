@@ -40,11 +40,16 @@ body {
 }
 .slidecontainer {
   width: 100%;
+  display:flex;
+  align-items: center;
+  
 }
-
+.timeContainer{
+  width: 10%;
+}
 .slider {
   -webkit-appearance: none;
-  width: 100%;
+  width: 90%;
   height: 5px;
   border-radius: 5px;
   background: var(--light);
@@ -123,7 +128,7 @@ body {
   background-color: var(--neutral);
   color:var(--light)
 }
-.addColorVisualizer {
+.buttons__top .addColor{
   padding: 0;
   font-size: 30px;
   width: 60px;

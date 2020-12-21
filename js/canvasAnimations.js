@@ -1,14 +1,16 @@
 var canEnter = true;
 var maxDistance;
-wantAugment = true;
+var wantAugment = true;
+var bars=10;
+colorVelocity=0.5;
 var randomArray = [];
 var myAnimation = "Grid";
-
-var colors = [
-  hex_to_RGB("#ff0000"),
-  hex_to_RGB("#00ff00"),
-  hex_to_RGB("#0000ff"),
-];
+var numberOfColors=3;
+var colors = {
+  'color-0': hex_to_RGB("#ff0000"),
+  'color-1': hex_to_RGB("#00ff00"),
+  'color-2': hex_to_RGB("#0000ff"),
+};
 var animations = {
   "Horizontal Lines": {
     execute(ctx, fArray, bars) {
@@ -64,9 +66,9 @@ var animations = {
 };
 randomArray = getRandomNumbers(100);
 
-function animate(ctx, fArray, bars) {
+function animate(ctx, fArray) {
   ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas
-  moveColor(fArray, 0.5);
+  moveColor(fArray, colorVelocity);
   animations[myAnimation].execute(ctx, fArray, bars);
 }
 
@@ -316,7 +318,7 @@ function showGrid2(ctx, fArray, n) {
     mainIteration++;
   }
   function paintSquare() {
-    color = calculateColor(i, incrementDiference(fArray[randomArray[(i/(n*n))*100]]), n*n/100);
+    color = calculateColor(i, incrementDiference(fArray[randomArray[i/(n*n)*100]]), n*n/100);
     ctx.fillStyle = color;
     ctx.fillRect(
       (x * canvas.width) / n,
@@ -344,9 +346,11 @@ function hex_to_RGB(hex) {
 function calculateColor(n, sat, bars) {
   let a = iteration % (100 * bars);
   n = ((bars * 100 + n - a) % (100 * bars)) / (100 * bars); // convert from 0-(100*bars) to 0-1 range and adding the movement.
-  var r = 0, g = 0, b = 0, length = colors.length;
-  colors.forEach((color, i) => {
+  let colorValues=Object.values(colors);
+  var r = 0, g = 0, b = 0, length = colorValues.length;
+  colorValues.forEach((color, i) => {
     i = length - i - 1;
+    
     if (n >= (i - 1) / (length - 1) && n <= (i + 1) / (length - 1)) {
       r +=colorFunction(i, color.r);
       g +=colorFunction(i, color.g);

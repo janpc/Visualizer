@@ -3,7 +3,6 @@ var canvas = document.getElementById("canvas"),
   context,
   analyser,
   animationFrame,
-  bars,
   myAudio,
   hasStarted = false,
   iteration = 0;
@@ -37,12 +36,12 @@ function startAnimation() {
     context.close();
   }
   context = new (window.AudioContext || window.webkitAudioContext)(); // AudioContext object instance
-  if (colors[0] != colors[colors.length - 1]) {
-    colors.push(colors[0]);
+  let colorValues=Object.values(colors);
+  if (colorValues[0] != colorValues[colorValues.length - 1]) {
+    colors['last-color']=colorValues[0] ;
   }
   if(animationFrame){
     cancelAnimationFrame(animationFrame);
-    console.log(animationFrame);
   }
   initializeAnimation(context);
 }
@@ -59,12 +58,12 @@ function initializeAnimation(context) {
 function frameLooper() {
   if(isPlaying){
     animationFrame = requestAnimationFrame(frameLooper);
+    changeSliderValue((myAudio.currentTime / myAudio.duration) * 1000); // change slider value to follow the song time
+    changeSliderTime(myAudio.currentTime);
+    let frequencyArray = createFrequencyArray();
+    animate(ctx, frequencyArray);
   }
-  changeSligerValue((myAudio.currentTime / myAudio.duration) * 1000); // change slider value to follow the song time
-
-  let frequencyArray = createFrequencyArray();
-
-  animate(ctx, frequencyArray, 36);
+  
 }
 
 function createFrequencyArray() {

@@ -44,9 +44,23 @@ slider.addEventListener("input", changeTime);
 function changeTime() {
   myAudio.currentTime = (this.value * myAudio.duration) / 1000;
 }
-function changeSligerValue(value){
+function changeSliderValue(value){
   let slider = document.getElementById("timeRange");
   slider.value=value;
+}
+function changeSliderTime(value){
+  s=Math.floor(value);
+  m=0;
+  if(s>60){
+    m=Math.floor(s/60);
+    s=s%60;
+  }
+  let timeContainer = document.getElementById("timeContainer");
+  let str='';
+  str+=m<10?'0'+m:m;
+  str+=':';
+  str+=s<10?'0'+s:s;
+  timeContainer.innerHTML=str;
 }
 
 //-------------------------------------------------------------Next/Previous-----------------------------------------------------------//
@@ -73,7 +87,7 @@ function nextPreviousSong(event) {
     }
   }
   changeSong(musicArray[index]);
-  changeSligerValue(0);
+  changeSliderValue(0);
   myAudio.addEventListener("ended", nextPreviousSong);
   //startAnimation();
 }
@@ -88,6 +102,7 @@ function changeSong(song) {
   if (isPlaying) {
     myAudio.play();
   }
+  changeSliderValue(0);
   startAnimation();
 }
 
@@ -142,7 +157,9 @@ function printInMain(songs) {
   }
 }
 
+
 //to do print songs in visulizer
+
 
 //-------------------------------------------change song in main---------------------------------------------//
 

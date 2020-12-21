@@ -54,6 +54,7 @@ input[type="color"]::-webkit-color-swatch {
 .selectSongSearch {
   display: flex;
   justify-content: center;
+  margin-bottom: 1em;
 }
 .selectSongSearch > span {
   color: var(--dark);
@@ -171,9 +172,9 @@ input[type="color"]::-webkit-color-swatch {
 .selectAnimation .colorsMain {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  width: 100%;
 }
 .selectAnimation .colorsMain > input[type="color"] {
   margin: 2px;
