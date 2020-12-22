@@ -5,7 +5,8 @@ var canvas = document.getElementById("canvas"),
   animationFrame,
   myAudio,
   hasStarted = false,
-  iteration = 0;
+  iteration = 0,
+  nextKeyFrame;
 
 var requestAnimationFrame =
   window.requestAnimationFrame ||
@@ -62,6 +63,9 @@ function frameLooper() {
     changeSliderTime(myAudio.currentTime);
     let frequencyArray = createFrequencyArray();
     animate(ctx, frequencyArray);
+    if(myAudio.currentTime>=nextKeyFrame){
+      changeKeyframe(nextKeyFrame);
+    }
   }
   
 }

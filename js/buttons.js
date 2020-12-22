@@ -7,10 +7,17 @@ const colorsMain = document.getElementById("colorsMain");
 const colorsVisualizer = document.querySelector("#buttonsTop>#colors");
 const sliderBarsVisualizer = document.getElementById("sliderBarsVisualizer");
 const sliderBarsMain = document.getElementById("sliderBars");
+const menuButton=document.getElementById('menuButton');
+const closeMenu=document.getElementById('closeMenu');
+const setMain=document.getElementById('setMain');
+const createKF=document.getElementById('createKeyframe');
+const saveKeyframes=document.getElementById('saveKeyframes');
+const keyframesDiv=document.getElementById('keyframesDiv');
 const sliderVelocityVisualizer = document.getElementById(
   "sliderVelocityVisualizer"
 );
 const sliderVelocityMain = document.getElementById("sliderVelocity");
+const menuItemsDiv=document.getElementById('menuItemsDiv');
 let selectSongButton = document.querySelector(
   ".selectSong>.sectionTitle>.sectionButton"
 );
@@ -37,6 +44,15 @@ sliderBarsMain.addEventListener("change", getSliderBarsValue);
 sliderVelocityVisualizer.addEventListener("change", getSliderVelocityValue);
 sliderVelocityMain.addEventListener("change", getSliderVelocityValue);
 
+menuButton.addEventListener('click', showMenu);
+menuItemsDiv.addEventListener('click', changePageMenu);
+closeMenu.addEventListener('click', hideMenu)
+
+setMain.addEventListener('click', setInitialData);
+createKF.addEventListener('click', addKeyframe);
+saveKeyframes.addEventListener('click', saveActualData);
+keyframesDiv.addEventListener('click', keyframeAction)
+
 function openSection(event) {
   var parent = event.target.parentNode;
   while (parent.nodeName != "DIV") {
@@ -59,13 +75,13 @@ function changePage() {
   if (page == "mainPage") {
     document.getElementById("mainPage").classList.remove("active");
     document.getElementById("visualizerPage").classList.add("active");
-    document.querySelector(":root").style.setProperty("--dark", "black");
+    document.querySelector("body").style.backgroundColor= "black";
     setInputVariablesVisualizer();
     page = "visualizerPage";
   } else if (page == "visualizerPage") {
     document.getElementById("visualizerPage").classList.remove("active");
     document.getElementById("mainPage").classList.add("active");
-    document.querySelector(":root").style.setProperty("--dark", "#1d283e");
+    document.querySelector("body").style.backgroundColor= "var(--dark)";
     setInputVariablesMain();
     page = "mainPage";
     printInMain(myMusic);
@@ -169,7 +185,7 @@ function addColor(event) {
   if (keys.length < 10) {
     let last = colors["last-color"];
     delete colors["last-color"];
-    colors["color-" + numberOfColors] = { r: 0, g: 0, b: 0 };
+    colors["color-" + numberOfColors] = { r: 255, g: 255, b: 255 };
     colors["last-color"] = last;
     numberOfColors++;
   } else {
@@ -218,4 +234,42 @@ function setInputVariablesVisualizer(){
   sliderBarsVisualizer.previousElementSibling.innerHTML = "Bars: " + bars;
   sliderVelocityVisualizer.value=colorVelocity*10;
   sliderVelocityVisualizer.previousElementSibling.innerHTML = "Velocity: " + colorVelocity;
+}
+
+
+
+//----------------------------------------menu Buttons-------------------------------------//
+
+function showMenu(){
+  menu=document.getElementById('menu');
+  if(!menu.classList.contains('menuActive')){
+    menu.classList.add('menuActive')
+  }
+}
+function hideMenu(){
+  menu=document.getElementById('menu');
+  if(menu.classList.contains('menuActive')){
+    menu.classList.remove('menuActive')
+  }
+}
+function changePageMenu(event){
+  if(event.target.value=='music'){
+    document.getElementById('menuSearch').classList.add('active');
+    document.getElementById('menuKeyframes').classList.remove('active');
+    document.getElementById('KeyframesButtonMenu').classList.remove('menuItemActive');
+    document.getElementById('musicButtonMenu').classList.add('menuItemActive');
+  }else if(event.target.value=='keyframes'){
+    document.getElementById('menuSearch').classList.remove('active');
+    document.getElementById('menuKeyframes').classList.add('active');
+    document.getElementById('KeyframesButtonMenu').classList.add('menuItemActive');
+    document.getElementById('musicButtonMenu').classList.remove('menuItemActive');
+  }
+}
+
+function keyframeAction(event){
+  if(event.target.id.includes('deleteKeyframe')){
+    deleteKeyframe(event.taregt.value);
+  }else if(event.target.id.includes('goToKeyframe')){
+    goToKeyframeTime(event.target.value);
+  }
 }

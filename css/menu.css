@@ -1,30 +1,189 @@
-.menu{
+.menuButton{
+    z-index: 1;
+  position: fixed;
+  font-size: 45px;
+  top: 0.8em;
+  right: 0.8em;
+  border-radius: 50%;
+  padding: 10px 10px;
+  border: none;
+  background-color: var(--neutral);
+}
+
+.menuButton:hover,
+.menuButton:focus {
+  visibility: visible;
+  outline: none;
+  box-shadow: 0 0 10px var(--neutral);
+}
+.menu {
+  position: fixed;
+  z-index: 2;
+  width: 25vw;
+  height: 100vh;
+    box-shadow: 0 0 10px black;
+  background-color: var(--smooth);
+  right: -25vw;
+  top: 0;
+  transition: right 1s ease-in-out;
+}
+.menuActive{
+right: 0;
+}
+.menuItemsDiv {
+  display: flex;
+  margin: 0%;
+  background-color: var(--neutral);
+}
+.menuItemsDiv > * {
+  width: 50%;
+  text-align: center;
+  background-color: #00000000;
+  border: none;
+  font-weight: 500;
+  font-size: 24px;
+  padding: 0.5em 0;
+  color: var(--light);
+}
+.menuItemsDiv > *:first-child {
+  border-right: solid 1px var(--light);
+}
+.menuItemsDiv > *:last-child {
+  border-left: solid 1px var(--light);
+}
+.menuItem:hover,
+.menuItem:focus{
+    outline: none;
+    text-decoration: underline;
+}
+.menuItemActive {
+  background-color: var(--smooth);
+}
+.menuContent>div{
     display:none;
-    position:fixed;
-    z-index: 2;
-    width: 30vw;
-    height: 100vh;
-    background-color: var(--neutral);
-    right:0;
-    top:0;
 }
-.menuItemsDiv{
-    display: flex;
+.closeMenuDiv {
+  width: 100%;
+  background-color: var(--neutral);
 }
-.menuItemsDiv>*{
-    width:50%;
-    text-align: center;
+.closeMenu {
+  font-size: 24px;
+  background-color: var(--dark);
+  border: none;
+  border-radius: 50%;
+  padding: 0.2em;
+  margin: 0.5em;
+}
+.closeMenu:focus, .closeMenu:hover{
+    outline:none;
+    box-shadow: 0 0 10px var(--light);
+}
+.KeyframesButtonsDiv {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.keyframesDiv{
+    overflow-y: scroll;
+    height:77.5vh
+}
+.KeyframesButtons {
+  font-size: 36px;
+  background-color: var(--dark);
+  border: none;
+  border-radius: 10px;
+  padding: 0.3em;
+  margin: 0.5em 0;
+}
+.keyframe{
+    background-color: var(--dark);
+    margin:1em;
+    border-radius: 1em;
+    padding: 1em 1.5em;
+}
+.keyframe__header{
+    margin:0.5em 0 ;
+    display:flex;
+    justify-content: space-between;
+}
+.keyframe__header>*{
+    margin:0 0 1em 0 ;
+}
+.keyframe__color__div{
+    
+    display:flex;
+    flex-wrap: wrap;
+}
+.keyframe__color{
+    width:35px;
+    height:35px;
+    border-radius: 50%;
+    border:2px solid var(--light);
+    margin: 0.2em 0.15em ;
+}
+.keyframe__info__div{
+    display:flex;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+}
+.keyframe__info{
+    font-size: 18px;
+}
+.keyframe__button__div{
+    display:flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+.keyframe__button{
     background-color: #00000000;
     border:none;
-    font-weight: 500;
-    font-size: 24px;
-    padding:0.5em 0;
-    color:var(--light);
-    border-bottom: solid 2px var(--light);
 }
-.menuItemsDiv>*:first-child{
-    border-right: solid 1px var(--light);
+.songItemMenu {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--light);
+  background-color: var(--dark);
+  border: none;
+  border-radius: 10px;
+  margin: 0.3em 5%;
+  padding: 0 0.5em;
+  width: 90%;
+  height: 44px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
-.menuItemsDiv>*:last-child{
-    border-left: solid 1px var(--light);
+
+.songItemMenu:focus,
+.songItemMenu:hover {
+  outline: none;
+  box-shadow: 0 0 10px var(--light);
+  border: none;
+  background-color: var(--accent);
+}
+.actualSong{
+    background-color: var(--accent) !important;
+  }
+.musicSearchMenu {
+    background-color: var(--light);
+    border-radius: 10px;
+    border: none;
+    color: var(--dark);
+    padding-left: 5px;
+    font-size: 20px;
+    width: 75%;
+  }
+ .musicSearchMenu:focus {
+    outline: none;
+    border: 2px solid var(--dark);
+  }
+.musicResultsMenu{
+    overflow-y: scroll;
+    height:77.5vh
+}
+
+@media (max-width: 1300px) {
+    .menuButton{
+        display:none;
+    }
 }

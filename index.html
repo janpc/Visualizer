@@ -216,6 +216,13 @@
       >
         arrow_back
       </button>
+      <button
+        type="button"
+        class="material-icons menuButton shadow clickable"
+        id="menuButton"
+      >
+        menu
+      </button>
       <section class="buttons buttons__top" id="buttonsTop">
         <div id="colors"></div>
         <div class="containerTop">
@@ -302,12 +309,37 @@
         </div>
       </section>
     </section>
-    <section class='menu'>
-      <div class='menuItemsDiv'>
-        <button class='menuItem'>Music</button>
-        <button class='menuItem'>Keyframes</button>
+    <section class='menu' id='menu'>
+      <div class='closeMenuDiv'>
+        <button class="material-icons closeMenu clickable shadow" id='closeMenu'> close </button>
       </div>
-      <div id='menuContent'>
+      <div class='menuItemsDiv' id='menuItemsDiv'>
+        <button class='menuItem clickable menuItemActive' id='musicButtonMenu' value='music'>Music</button>
+        <button class='menuItem clickable' id='KeyframesButtonMenu' value='keyframes'>Keyframes</button>
+      </div>
+      <div id='menuContent' class='menuContent'>
+        <div id='menuSearch' class='menuSearch active'>
+          <div class="selectSongSearch">
+            <span class="material-icons"> search </span>
+            <input
+              type="search"
+              id="musicSearchMenu"
+              class="musicSearchMenu clickable"
+            />
+            
+          </div>
+          <div id="musicResultsMenu" class="musicResultsMenu"></div>
+        </div>
+        <div id='menuKeyframes' class='menuKeyframes'>
+          <div class='KeyframesButtonsDiv'>
+            <button class="material-icons KeyframesButtons clickable" id='setMain'> flag </button>
+            <button class="material-icons KeyframesButtons clickable" id='createKeyframe'> push_pin </button>
+            <button class="material-icons KeyframesButtons clickable" id='saveKeyframes'> save </button>
+          </div>
+          <div class='keyframesDiv' id='keyframesDiv'>
+            
+          </div>
+        </div>
 
       </div>
     </section>

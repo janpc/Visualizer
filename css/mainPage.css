@@ -78,8 +78,11 @@ input[type="color"]::-webkit-color-swatch {
   padding-block-end: 0.5em;
   margin: 2em 0;
 }
+.animationInputs{
+  overflow: hidden;
+}
 .animationInputs>*{
-  margin:0.5em;
+  margin:2em;
 }
 .selectAnimation {
   margin-bottom: 5em !important;
@@ -337,9 +340,8 @@ input[type="color"]::-webkit-color-swatch {
     border: none;
     outline: none;
   }
-  
 }
 
 .active {
-  display: block;
+  display: block !important;
 }
