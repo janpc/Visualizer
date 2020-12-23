@@ -186,4 +186,7 @@ right: 0;
     .menuButton{
         display:none;
     }
+    .menuContent{
+      display:none;
+    }
 }

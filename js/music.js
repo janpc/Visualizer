@@ -12,14 +12,19 @@ const musicResults = document.querySelector(".musicResults");
 const musicResultsMenu = document.querySelector(".musicResultsMenu");
 const musicSearchMain = document.getElementById("musicSearchMain");
 const musicSearchMenu = document.getElementById("musicSearchMenu");
+const playButton = document.getElementById("playButton");
+const slider = document.getElementById("timeRange");
+const nextButton = document.getElementById("nextButton");
+const previousButton = document.getElementById("previousButton");
+const shuffleButton = document.getElementById("shuffleButton");
+const fullscreenButton = document.getElementById("fullscreenButton");
 
 //-----------------------------------------------------------on load functions----------------------------------------------//
 printInMain(myMusic);
 printInVisualizer(myMusic);
 
 //-------------------------------------------------------------Play/Pause-----------------------------------------------------------//
-var playButton = document.getElementById("playButton");
-playButton.addEventListener("click", playMusic);
+
 function playMusic() {
   if (isPlaying) {
     myAudio.pause();
@@ -39,8 +44,8 @@ function playMusic() {
 }
 
 //-------------------------------------------------------------Slider-----------------------------------------------------------//
-var slider = document.getElementById("timeRange");
-slider.addEventListener("input", changeTime);
+
+
 
 function changeTime() {
   myAudio.currentTime = (this.value * myAudio.duration) / 10000;
@@ -73,12 +78,7 @@ function getTimeFromNumber(value){
 }
 
 //-------------------------------------------------------------Next/Previous-----------------------------------------------------------//
-var nextButton = document.getElementById("nextButton");
-var previousButton = document.getElementById("previousButton");
 
-nextButton.addEventListener("click", nextPreviousSong);
-previousButton.addEventListener("click", nextPreviousSong);
-myAudio.addEventListener("ended", nextPreviousSong);
 
 function nextPreviousSong(event) {
   let index = musicArray.indexOf(mySong);
@@ -95,6 +95,7 @@ function nextPreviousSong(event) {
       index--;
     }
   }
+  myAudio.removeEventListener("ended", nextPreviousSong);
   changeSong(musicArray[index]);
   changeSliderValue(0);
   myAudio.addEventListener("ended", nextPreviousSong);
@@ -135,8 +136,6 @@ function randomizeArray(array) {
 
 //-------------------------------------------------------------Shuffle-----------------------------------------------------------//
 
-var shuffleButton = document.getElementById("shuffleButton");
-shuffleButton.addEventListener("click", suffleSongs);
 function suffleSongs() {
   if (areShuled) {
     musicArray = [...myMusic];
@@ -188,9 +187,6 @@ function printInVisualizer(songs) {
 
 //-------------------------------------------change song in main---------------------------------------------//
 
-musicResults.addEventListener("click", getSong);
-musicResultsMenu.addEventListener("click", getSong);
-
 function getSong(event) {
   if (event.target != musicResults) {
     if (document.getElementById(mySong + "main")) {
@@ -203,6 +199,7 @@ function getSong(event) {
     selected = event.target.value;
     event.target.classList.add('actualSong');
   }
+  console.log(event)
 }
 
 //to do change song in visualizer
@@ -223,9 +220,6 @@ function searchSong(parameter, songs) {
   return filtered;
 }
 
-musicSearchMain.addEventListener("input", searchMain);
-musicSearchMenu.addEventListener("input", searchVisualizer);
-
 function searchMain(event) {
   let match = searchSong(event.target.value, myMusic);
   printInMain(match);
@@ -235,9 +229,7 @@ function searchVisualizer(event){
   printInVisualizer(match);
 }
 
-//-------------------------------------------------------fullscreen-------------------------------------
-let fullscreenButton = document.getElementById("fullscreenButton");
-fullscreenButton.addEventListener("click", fullscreen);
+//-------------------------------------------------------fullscreen------------------------------------
 
 function fullscreen() {
   if (canvas.webkitRequestFullScreen) {

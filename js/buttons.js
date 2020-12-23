@@ -7,17 +7,17 @@ const colorsMain = document.getElementById("colorsMain");
 const colorsVisualizer = document.querySelector("#buttonsTop>#colors");
 const sliderBarsVisualizer = document.getElementById("sliderBarsVisualizer");
 const sliderBarsMain = document.getElementById("sliderBars");
-const menuButton=document.getElementById('menuButton');
-const closeMenu=document.getElementById('closeMenu');
-const setMain=document.getElementById('setMain');
-const createKF=document.getElementById('createKeyframe');
-const saveKeyframes=document.getElementById('saveKeyframes');
-const keyframesDiv=document.getElementById('keyframesDiv');
+const menuButton = document.getElementById("menuButton");
+const closeMenu = document.getElementById("closeMenu");
+const setMain = document.getElementById("setMain");
+const createKF = document.getElementById("createKeyframe");
+const saveKeyframes = document.getElementById("saveKeyframes");
+const keyframesDiv = document.getElementById("keyframesDiv");
 const sliderVelocityVisualizer = document.getElementById(
   "sliderVelocityVisualizer"
 );
 const sliderVelocityMain = document.getElementById("sliderVelocity");
-const menuItemsDiv=document.getElementById('menuItemsDiv');
+const menuItemsDiv = document.getElementById("menuItemsDiv");
 let selectSongButton = document.querySelector(
   ".selectSong>.sectionTitle>.sectionButton"
 );
@@ -28,30 +28,7 @@ let selectAnimationButton = document.querySelector(
 // do on load
 printAnimations(animationsMain);
 printColors(colorsMain);
-
-selectSongButton.addEventListener("click", openSection);
-selectAnimationButton.addEventListener("click", openSection);
-
-colorsMain.addEventListener("change", changeColor);
-colorsVisualizer.addEventListener("change", changeColor);
-
-colorsMain.addEventListener("click", addRemoveColor);
-colorsVisualizer.addEventListener("click", addRemoveColor);
-
-sliderBarsVisualizer.addEventListener("change", getSliderBarsValue);
-sliderBarsMain.addEventListener("change", getSliderBarsValue);
-
-sliderVelocityVisualizer.addEventListener("change", getSliderVelocityValue);
-sliderVelocityMain.addEventListener("change", getSliderVelocityValue);
-
-menuButton.addEventListener('click', showMenu);
-menuItemsDiv.addEventListener('click', changePageMenu);
-closeMenu.addEventListener('click', hideMenu)
-
-setMain.addEventListener('click', setInitialData);
-createKF.addEventListener('click', addKeyframe);
-saveKeyframes.addEventListener('click', saveActualData);
-keyframesDiv.addEventListener('click', keyframeAction)
+addRemoveEventListenersMain();
 
 function openSection(event) {
   var parent = event.target.parentNode;
@@ -75,14 +52,17 @@ function changePage() {
   if (page == "mainPage") {
     document.getElementById("mainPage").classList.remove("active");
     document.getElementById("visualizerPage").classList.add("active");
-    document.querySelector("body").style.backgroundColor= "black";
+    document.querySelector("body").style.backgroundColor = "black";
+    addRemoveEventListenersVisualizer();
     setInputVariablesVisualizer();
     page = "visualizerPage";
   } else if (page == "visualizerPage") {
     document.getElementById("visualizerPage").classList.remove("active");
     document.getElementById("mainPage").classList.add("active");
-    document.querySelector("body").style.backgroundColor= "var(--dark)";
+    document.querySelector("body").style.backgroundColor = "var(--dark)";
+    addRemoveEventListenersMain();
     setInputVariablesMain();
+    hideMenu();
     page = "mainPage";
     printInMain(myMusic);
     if (isPlaying) {
@@ -108,9 +88,6 @@ function printAnimations(here) {
 }
 
 //-----------------------------------------change animation-----------------------
-animationsMain.addEventListener("click", changeAnimation);
-animationsVisualizer.addEventListener("click", changeAnimation);
-
 function changeAnimation(event) {
   myAnimation = event.target.value;
 }
@@ -213,7 +190,8 @@ function getSliderBarsValue(event) {
 
 function getSliderVelocityValue(event) {
   colorVelocity = event.target.value / 10;
-  event.target.previousElementSibling.innerHTML = "Color velocity: " + colorVelocity;
+  event.target.previousElementSibling.innerHTML =
+    "Color velocity: " + colorVelocity;
 }
 
 //---------------------------------setInputVariables------------------
@@ -223,53 +201,134 @@ function setInputVariablesMain() {
   printColors(colorsMain);
   sliderBarsMain.value = bars;
   sliderBarsMain.previousElementSibling.innerHTML = "Subdivisions: " + bars;
-  sliderVelocityMain.value = colorVelocity*10;
-  sliderVelocityMain.previousElementSibling.innerHTML = "Color velocity: " + colorVelocity;
+  sliderVelocityMain.value = colorVelocity * 10;
+  sliderVelocityMain.previousElementSibling.innerHTML =
+    "Color velocity: " + colorVelocity;
 }
 
-function setInputVariablesVisualizer(){
+function setInputVariablesVisualizer() {
   printAnimations(animationsVisualizer);
   printColors(colorsVisualizer);
-  sliderBarsVisualizer.value=bars;
-  sliderBarsVisualizer.previousElementSibling.innerHTML = "Subdivisions: " + bars;
-  sliderVelocityVisualizer.value=colorVelocity*10;
-  sliderVelocityVisualizer.previousElementSibling.innerHTML = "Color velocity: " + colorVelocity;
+  sliderBarsVisualizer.value = bars;
+  sliderBarsVisualizer.previousElementSibling.innerHTML =
+    "Subdivisions: " + bars;
+  sliderVelocityVisualizer.value = colorVelocity * 10;
+  sliderVelocityVisualizer.previousElementSibling.innerHTML =
+    "Color velocity: " + colorVelocity;
 }
-
-
 
 //----------------------------------------menu Buttons-------------------------------------//
 
-function showMenu(){
-  menu=document.getElementById('menu');
-  if(!menu.classList.contains('menuActive')){
-    menu.classList.add('menuActive')
+function showMenu() {
+  menu = document.getElementById("menu");
+  if (!menu.classList.contains("menuActive")) {
+    menu.classList.add("menuActive");
   }
 }
-function hideMenu(){
-  menu=document.getElementById('menu');
-  if(menu.classList.contains('menuActive')){
-    menu.classList.remove('menuActive')
+function hideMenu() {
+  menu = document.getElementById("menu");
+  if (menu.classList.contains("menuActive")) {
+    menu.classList.remove("menuActive");
   }
 }
-function changePageMenu(event){
-  if(event.target.value=='music'){
-    document.getElementById('menuSearch').classList.add('active');
-    document.getElementById('menuKeyframes').classList.remove('active');
-    document.getElementById('KeyframesButtonMenu').classList.remove('menuItemActive');
-    document.getElementById('musicButtonMenu').classList.add('menuItemActive');
-  }else if(event.target.value=='keyframes'){
-    document.getElementById('menuSearch').classList.remove('active');
-    document.getElementById('menuKeyframes').classList.add('active');
-    document.getElementById('KeyframesButtonMenu').classList.add('menuItemActive');
-    document.getElementById('musicButtonMenu').classList.remove('menuItemActive');
+function changePageMenu(event) {
+  if (event.target.value == "music") {
+    document.getElementById("menuSearch").classList.add("active");
+    document.getElementById("menuKeyframes").classList.remove("active");
+    document
+      .getElementById("KeyframesButtonMenu")
+      .classList.remove("menuItemActive");
+    document.getElementById("musicButtonMenu").classList.add("menuItemActive");
+  } else if (event.target.value == "keyframes") {
+    document.getElementById("menuSearch").classList.remove("active");
+    document.getElementById("menuKeyframes").classList.add("active");
+    document
+      .getElementById("KeyframesButtonMenu")
+      .classList.add("menuItemActive");
+    document
+      .getElementById("musicButtonMenu")
+      .classList.remove("menuItemActive");
   }
 }
 
-function keyframeAction(event){
-  if(event.target.id.includes('deleteKeyframe')){
+function keyframeAction(event) {
+  if (event.target.id.includes("deleteKeyframe")) {
     deleteKeyframe(event.target.value);
-  }else if(event.target.id.includes('goToKeyframe')){
+  } else if (event.target.id.includes("goToKeyframe")) {
     goToKeyframeTime(event.target.value);
   }
+}
+
+
+function addRemoveEventListenersMain() {
+//------------------add----------------------------
+  animationsMain.addEventListener("click", changeAnimation);
+  colorsMain.addEventListener("change", changeColor);
+  colorsMain.addEventListener("click", addRemoveColor);
+  sliderBarsMain.addEventListener("change", getSliderBarsValue);
+  sliderVelocityMain.addEventListener("change", getSliderVelocityValue);
+  selectSongButton.addEventListener("click", openSection);
+  selectAnimationButton.addEventListener("click", openSection);
+  musicResults.addEventListener("click", getSong);
+  musicSearchMain.addEventListener("input", searchMain);
+
+  //----------------------remove---------------------------------
+  nextButton.removeEventListener("click", nextPreviousSong);
+  previousButton.removeEventListener("click", nextPreviousSong);
+  myAudio.removeEventListener("ended", nextPreviousSong);
+  shuffleButton.removeEventListener("click", suffleSongs);
+  musicResultsMenu.removeEventListener("click", getSong);
+  musicSearchMenu.removeEventListener("input", searchVisualizer);
+  fullscreenButton.removeEventListener("click", fullscreen);
+  playButton.removeEventListener("click", playMusic);
+  slider.removeEventListener("input", changeTime);
+  colorsVisualizer.removeEventListener("change", changeColor);
+  colorsVisualizer.removeEventListener("click", addRemoveColor);
+  sliderBarsVisualizer.removeEventListener("change", getSliderBarsValue);
+  sliderVelocityVisualizer.removeEventListener("change", getSliderVelocityValue);
+  animationsVisualizer.removeEventListener("click", changeAnimation);
+  setMain.removeEventListener("click", setInitialData);
+  createKF.removeEventListener("click", addKeyframe);
+  saveKeyframes.removeEventListener("click", saveActualData);
+  keyframesDiv.removeEventListener("click", keyframeAction);
+  menuButton.removeEventListener("click", showMenu);
+  menuItemsDiv.removeEventListener("click", changePageMenu);
+  closeMenu.removeEventListener("click", hideMenu);
+  
+}
+
+function addRemoveEventListenersVisualizer() {
+  //------------------add----------------------------
+  nextButton.addEventListener("click", nextPreviousSong);
+  previousButton.addEventListener("click", nextPreviousSong);
+  myAudio.addEventListener("ended", nextPreviousSong);
+  shuffleButton.addEventListener("click", suffleSongs);
+  musicResultsMenu.addEventListener("click", getSong);
+  musicSearchMenu.addEventListener("input", searchVisualizer);
+  fullscreenButton.addEventListener("click", fullscreen);
+  playButton.addEventListener("click", playMusic);
+  slider.addEventListener("input", changeTime);
+  colorsVisualizer.addEventListener("change", changeColor);
+  colorsVisualizer.addEventListener("click", addRemoveColor);
+  sliderBarsVisualizer.addEventListener("change", getSliderBarsValue);
+  sliderVelocityVisualizer.addEventListener("change", getSliderVelocityValue);
+  animationsVisualizer.addEventListener("click", changeAnimation);
+  setMain.addEventListener("click", setInitialData);
+  createKF.addEventListener("click", addKeyframe);
+  saveKeyframes.addEventListener("click", saveActualData);
+  keyframesDiv.addEventListener("click", keyframeAction);
+  menuButton.addEventListener("click", showMenu);
+  menuItemsDiv.addEventListener("click", changePageMenu);
+  closeMenu.addEventListener("click", hideMenu);
+
+  //----------------------remove---------------------------------
+  animationsMain.removeEventListener("click", changeAnimation);
+  colorsMain.removeEventListener("change", changeColor);
+  colorsMain.removeEventListener("click", addRemoveColor);
+  sliderBarsMain.removeEventListener("change", getSliderBarsValue);
+  sliderVelocityMain.removeEventListener("change", getSliderVelocityValue);
+  selectSongButton.removeEventListener("click", openSection);
+  selectAnimationButton.removeEventListener("click", openSection);
+  musicResults.removeEventListener("click", getSong);
+  musicSearchMain.removeEventListener("input", searchMain);
 }
