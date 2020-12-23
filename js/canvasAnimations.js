@@ -5,7 +5,6 @@ var colorVelocity=0.5;
 var randomArray = [];
 var myAnimation = "Grid";
 var numberOfColors=3;
-var keyframes={};
 var actualAnimationData;
 var colors = {
   'color-0': hex_to_RGB("#ff0000"),

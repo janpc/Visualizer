@@ -32,7 +32,7 @@ function getDataFromActualAnimation() {
     actualAnimationData = copyObjectWithKF(visualizerData[mySong]);
     setActualData();
   } else {
-    keyframes = [];
+    actualAnimationData.keyframes = [];
     setInitialData();
   }
 }
@@ -45,8 +45,7 @@ function setActualData() {
   bars = actualAnimationData.bars;
   velocity = actualAnimationData.colorVelocity;
   numberOfColors = actualAnimationData.numberOfColors;
-  keyframes = copyKeyframes(actualAnimationData.keyframes);
-  let keys = Object.keys(keyframes);
+  let keys = Object.keys(actualAnimationData.keyframes);
   if (keys.length > 0) {
     nextKeyFrame = keys[0];
   }else {
@@ -65,7 +64,7 @@ function setInitialData() {
     bars: bars,
     velocity: colorVelocity,
     numberOfColors: numberOfColors,
-    keyframes: copyKeyframes(keyframes),
+    keyframes: copyKeyframes(actualAnimationData.keyframes),
   };
   showKeyframes();
 }
@@ -87,14 +86,14 @@ function changeSongKeyfrmes() {
 }
 
 function changeKeyframe(time) {
-  myAnimation = keyframes[time].animation;
+  myAnimation = actualAnimationData.keyframes[time].animation;
   animationsVisualizer.value = myAnimation;
   animationsMain.value = myAnimation;
-  colors = getColors(keyframes[time].colors);
-  bars = keyframes[time].bars;
-  velocity = keyframes[time].colorVelocity;
-  numberOfColors = keyframes[time].numberOfColors;
-  let keys = Object.keys(keyframes);
+  colors = getColors(actualAnimationData.keyframes[time].colors);
+  bars = actualAnimationData.keyframes[time].bars;
+  velocity = actualAnimationData.keyframes[time].colorVelocity;
+  numberOfColors = actualAnimationData.keyframes[time].numberOfColors;
+  let keys = Object.keys(actualAnimationData.keyframes);
   let index = keys.indexOf(time);
   if (keys.length > index) {
     if (keys[index + 1]) {
@@ -157,7 +156,6 @@ function createKeyframeToShow(animation, colors, bars, velocity, time, key) {
 
 function deleteKeyframe(value) {
 
-  delete keyframes[value];
   delete actualAnimationData.keyframes[value];
   showKeyframes();
 
@@ -211,7 +209,7 @@ function copyKeyframes(k) {
 
 function goToActualKeyframe() {
   let time = myAudio.currentTime;
-  let keys = Object.keys(keyframes);
+  let keys = Object.keys(actualAnimationData.keyframes);
   let i = 0;
   let canContinue = true;
   while (i < keys.length && canContinue) {
@@ -222,7 +220,9 @@ function goToActualKeyframe() {
     }
   }
   if (i <= 1) {
-    setActualData();
+    if(keys.length>0){
+      setActualData();
+    }
   } else {
     changeKeyframe(keys[i - 1]);
   }

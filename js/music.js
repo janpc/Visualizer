@@ -43,7 +43,7 @@ var slider = document.getElementById("timeRange");
 slider.addEventListener("input", changeTime);
 
 function changeTime() {
-  myAudio.currentTime = (this.value * myAudio.duration) / 1000;
+  myAudio.currentTime = (this.value * myAudio.duration) / 10000;
   goToActualKeyframe();
 }
 

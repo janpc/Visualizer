@@ -59,7 +59,7 @@ function initializeAnimation(context) {
 function frameLooper() {
   if(isPlaying){
     animationFrame = requestAnimationFrame(frameLooper);
-    changeSliderValue((myAudio.currentTime / myAudio.duration) * 1000); // change slider value to follow the song time
+    changeSliderValue((myAudio.currentTime / myAudio.duration) * 10000); // change slider value to follow the song time
     changeSliderTime(myAudio.currentTime);
     let frequencyArray = createFrequencyArray();
     animate(ctx, frequencyArray);
