@@ -118,6 +118,7 @@ function changeAnimation(event) {
 // ------------------------------------------Print colors-----------------------------------------------------//
 
 function printColors(here) {
+  console.log(colors);
   let keys = Object.keys(colors);
   let string = `<button
   type="button"
@@ -208,12 +209,12 @@ function removeColor(event) {
 
 function getSliderBarsValue(event) {
   bars = event.target.value;
-  event.target.previousElementSibling.innerHTML = "Bars: " + bars;
+  event.target.previousElementSibling.innerHTML = "Subdivisions: " + bars;
 }
 
 function getSliderVelocityValue(event) {
   colorVelocity = event.target.value / 10;
-  event.target.previousElementSibling.innerHTML = "Velocity: " + colorVelocity;
+  event.target.previousElementSibling.innerHTML = "Color velocity: " + colorVelocity;
 }
 
 //---------------------------------setInputVariables------------------
@@ -222,18 +223,18 @@ function setInputVariablesMain() {
   printAnimations(animationsMain);
   printColors(colorsMain);
   sliderBarsMain.value = bars;
-  sliderBarsMain.previousElementSibling.innerHTML = "Bars: " + bars;
+  sliderBarsMain.previousElementSibling.innerHTML = "Subdivisions: " + bars;
   sliderVelocityMain.value = colorVelocity*10;
-  sliderVelocityMain.previousElementSibling.innerHTML = "Velocity: " + colorVelocity;
+  sliderVelocityMain.previousElementSibling.innerHTML = "Color velocity: " + colorVelocity;
 }
 
 function setInputVariablesVisualizer(){
   printAnimations(animationsVisualizer);
   printColors(colorsVisualizer);
   sliderBarsVisualizer.value=bars;
-  sliderBarsVisualizer.previousElementSibling.innerHTML = "Bars: " + bars;
+  sliderBarsVisualizer.previousElementSibling.innerHTML = "Subdivisions: " + bars;
   sliderVelocityVisualizer.value=colorVelocity*10;
-  sliderVelocityVisualizer.previousElementSibling.innerHTML = "Velocity: " + colorVelocity;
+  sliderVelocityVisualizer.previousElementSibling.innerHTML = "Color velocity: " + colorVelocity;
 }
 
 

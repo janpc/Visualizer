@@ -95,9 +95,12 @@ function changeKeyframe(time) {
   numberOfColors = actualAnimationData.keyframes[time].numberOfColors;
   let keys = Object.keys(actualAnimationData.keyframes);
   let index = keys.indexOf(time);
+  setInputVariablesVisualizer();
   if (keys.length > index) {
     if (keys[index + 1]) {
       nextKeyFrame = keys[index + 1];
+    }else{
+      nextKeyFrame = null;
     }
   } else {
     nextKeyFrame = null;
