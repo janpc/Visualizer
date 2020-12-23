@@ -1,0 +1,29 @@
+﻿Visualizer Daily Log:
+Day 1(16/12/20):
+First of all I started the documentation. That will help me during the project and writing the incidents and lessons learned. After that I started a new repository in github and a new project on it with all the issues that i will have to solve. Then I cloned the repository and did the document structure with a folder for javascript, another for css and a last one for all the music. When I had this I started coding and I did the main page for mobile and after for tablet and web. This main page is a first approach because probably I will add information on it. 
+
+
+Day 2 (17/12/20):
+I started the day writing the daily log from the day before. After that I did the visualizer page, it’s not the end result but it’s a good approach and let me keep working. Developed the buttons.js with the code to change between pages. I created the music folder with some songs and the music.js that is in charge of the control of the songs, his buttons and the music search. Now you can select a song in the main page, play it in the visualizer page, change the song, shuffle the songs...
+
+
+Day 3 (18/12/20):
+First of all I writed the daily log of Thursday 17. After that I worked on the documentation of the project. Then I started developing. The first thing I developed was a basic animation that followed the song. When it was done i basically improved it, did more animations and fixed some bugs during the rest of the day and part of the weekend. 
+Day 4 (21/12/20):
+As always, the first thing I did was the daily log of the day before and worked on the documentation of the project. After that I started developing and the main things I did were: inject the colors, animations and other inputs from javascript to HTML, improve the visualizer.js and animations.js to be more efficient and fix some bugs.
+
+
+
+
+Day 5 (22/12/20):
+
+
+In the morning I started writing the daily log from the day before. After that I developed a lateral menu from the visualizer page with all it’s functionalities. To do that, I did a script called loacalStorage.js where all the functions and variables to manage keyframes and the data stored in local storage are defined. 
+
+
+
+
+Day 6 (23/12/20):
+
+
+Today I fixed some bugs, created the script keyboardEntries.js to enable the interaction of the user using only the keyboard and improved the usability and some functions of the project. I also finished the documentation and the daily log and did the presentation.

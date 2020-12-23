@@ -48,8 +48,8 @@ function startAnimation() {
 }
 
 function initializeAnimation(context) {
-  analyser = context.createAnalyser(); // AnalyserNode method
   ctx = canvas.getContext("2d");
+  analyser = context.createAnalyser(); // AnalyserNode method
   let source = context.createMediaElementSource(myAudio);
   source.connect(analyser);
   analyser.connect(context.destination);

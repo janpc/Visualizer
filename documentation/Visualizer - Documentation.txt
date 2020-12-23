@@ -1,0 +1,134 @@
+﻿Visualizer
+
+
+The idea of this project is to create a music visualizer that shows you an animation based on the sounds. When you enter the web the first thing that you will see will be a page that explains what’s a visualizer, how it works, a music searcher, some inputs to change the animation and a button to go to the visualizer page. There will be some buttons and inputs to change the song and the animation. When you like an animation you will be able to save it’s parameters in local storage and watch it later. All the web will be accessible by keyboard and will be a simpler mobile version. 
+
+
+
+
+Requirements:
+1. You must develop this project using a single HTML page
+2. You cannot use third-party libraries
+3. You must use Git, Github and feature branches
+4. You must follow the Git commit best practices in the following guidelines:
+   1. https://chris.beams.io/posts/git-commit/  
+5. This project must be developed individually
+6. All the code must be written in English
+7. You must include code comments
+
+
+In this project you will have to apply at least the following concepts:
+* HTML
+   * Use specific tags for each section of the page
+   * Use semantic HTML elements
+   * Use images
+   * Use dates
+   * Use different input types
+   * Use id’s and classes
+* CSS
+   * Change the appearance of HTML elements by their ID
+   * Change the appearance of HTML elements by their class
+   * Change the appearance of HTML elements by their tag name
+   * Use different CSS properties to apply a custom appearance
+   * Change the font properties
+   * Change margins and padding properties
+   * Use of pseudo classes
+   * Use of position absolute, relative and fixed
+   * Use of float property
+   * Use background properties
+* JS
+   * Use of variables and functions
+   * Use of localStorage or sessionStorage
+   * Use of booleans, arrays, objects, numbers and strings
+   * All the functions should receive the data it needs as parameters
+   * You must modularize all the code such that it is divided into functions for better readability, code reuse and maintainability
+   * You should try to avoid using global variables as much as possible
+   * Use at least two of the following iterators:
+      * for
+      * while
+      * do while
+      * forEach
+      * for in
+      * for of
+   * Use of IF and SWITCH statements
+   * Update/modify DOM HTML elements and CSS styles properties
+   * Create new HTML content and append it to the page
+   * Use of selectors by id, class, tag name and also query selectors
+   * Use at least 3 different event listeners
+   * Use of setInterval, setTimeout, clearInterval and clearTimeout methods
+   * Apply JS validation to the inputs
+* Git
+   * All the project will have to be developed using git and a github project management workflow
+* Accessibility
+   * You have to make sure that you use semantic HTML5 elements for all the main interaction elements of the application
+   * You must use button elements instead of <div>, <a> or <span> elements styled to look like forms
+   * Every input elements and buttons (except checkboxes that should have a size of 20x20px with padding or margin around them) should have a minimum height or height of 44px such that users can interact with them on mobile devices
+   * Users should be able to use the app using their keyboard without having to using the mouse for all the main interactions
+   * You must use a minimum font size of 12px —preferably 14px for small text and/or captions— and 16px or 18px for the main text of the application
+* Design
+   * You should research several websites such as the following for inspiration to design the UI of the application such that it is both visually appealing and functional
+      * https://dribbble.com/
+      * https://www.behance.net/galleries/ui-ux
+      * https://www.siteinspire.com/
+   * The application must be developed using a mobile first strategy such that it is usable on all the devices that users might open them in
+
+
+
+
+ the structure and some content like the text explaining what's a visualizer and how it works, but there's a part that's injected with javascript and is dynamic. All the main buttons are also in the html. Then we have three folders:
+Js: 
+In this folder are the different scripts needed in the project. 
+* Data.js: here is stored all the information needed of each song. There’s no functionality.
+* Buttons.js: here are all the addeventListeners for all the buttons in the project.
+* Music.js: here are defined all the functions to control the music.
+* Visualizer.js:
+* Animation.js: here all the animations and the main animate function are defined. 
+* loacalStorage.js: here all the functions and variables to manage keyframes and the data stored in local storage are defined
+* keyboardEntries.js: here all the functionalities related with keyboard entries are defined.
+Css: 
+In this folder are the different css documents needed in the project.
+* mainPage.css: here are defined all the characteristics of the main page.
+* Visualizer.css: here are defined all the characteristics of the visualizer page.
+* Animations.css: here are defined the animations of the main page.
+* Menu.css: here are defined all the characteristics of the lateral menu in the visualizer page.
+Music: 
+In this folder all the music for the project is stored.
+
+
+
+
+
+
+Incidents:
+* If you open the web directly in your browser the MediaElementAudioSource outputs zeroes due to CORS access restrictions. To solve that you have to open it with http-server or visual studio code live server.
+* Change size of the canvas. When you started a session and you wanted to change the size of the screen or put it on full screen mode the size of the canvas remained and you could see some black parts from the background.
+* Had some problems managing the data. There were a lot of variables and different objects and I had to copy data between them and sort it. Working with objects may be the best option if you want to copy and sort them.
+Lessons learned: 
+* How to work with Audio Context and the Web Audio API .
+* How to work with canvas.
+* How to work with objects (copy them and sort them).
+* How to work with requestAnimationFrame() and cancelAnimationFrame.
+* How to work with audio.
+
+
+Testing:
+You will have to verify that the project functionalities are compatible with all the current browsers. To prove that it is compatible you must attach screenshots of the project in each browser. 
+
+
+Firefox:
+  
+
+  
+
+
+
+Edge:
+  
+
+  
+
+
+
+
+
+Chrome:
