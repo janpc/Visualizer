@@ -14,22 +14,22 @@ var colors = {
 var animations = {
   "Horizontal Lines": {
     execute(ctx, fArray, bars) {
-      showHorizontalLines(ctx, fArray, bars);
+      showHorizontalLines(ctx, fArray);
     },
   },
   "Expand Horizontal Lines": {
     execute(ctx, fArray, bars) {
-      showExpandHorizontalLines(ctx, fArray, bars);
+      showExpandHorizontalLines(ctx, fArray);
     },
   },
   "Vertical Lines": {
     execute(ctx, fArray, bars) {
-      showVerticalLines(ctx, fArray, bars);
+      showVerticalLines(ctx, fArray);
     },
   },
   "Expand Vertical Lines": {
     execute(ctx, fArray, bars) {
-      showExpandVerticalLines(ctx, fArray, bars);
+      showExpandVerticalLines(ctx, fArray);
     },
   },
   "Expand Circles": {
@@ -72,7 +72,7 @@ function animate(ctx, fArray) {
   animations[myAnimation].execute(ctx, fArray, bars);
 }
 
-function showHorizontalLines(ctx, fArray, bars) {
+function showHorizontalLines(ctx, fArray) {
   for (var i = 0; i < 100; i++) {
     ctx.fillStyle = calculateColor(i, fArray[i] / 255, 1);
     ctx.fillRect(
@@ -83,7 +83,7 @@ function showHorizontalLines(ctx, fArray, bars) {
     );
   }
 }
-function showExpandHorizontalLines(ctx, fArray, bars) {
+function showExpandHorizontalLines(ctx, fArray) {
   for (var i = 0; i < 100; i++) {
     ctx.fillStyle = calculateColor(i, fArray[i] / 255, 1);
     ctx.fillRect(
@@ -94,7 +94,7 @@ function showExpandHorizontalLines(ctx, fArray, bars) {
     );
   }
 }
-function showExpandVerticalLines(ctx, fArray, bars) {
+function showExpandVerticalLines(ctx, fArray) {
   for (var i = 0; i < 100; i++) {
     ctx.fillStyle = calculateColor(i, fArray[i] / 255, 1);
     ctx.fillRect(
@@ -105,7 +105,7 @@ function showExpandVerticalLines(ctx, fArray, bars) {
     );
   }
 }
-function showVerticalLines(ctx, fArray, bars) {
+function showVerticalLines(ctx, fArray) {
   for (var i = 0; i < 100; i++) {
     ctx.fillStyle = calculateColor(i, fArray[i] / 255, 1);
     ctx.fillRect(

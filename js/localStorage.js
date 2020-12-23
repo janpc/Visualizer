@@ -44,7 +44,6 @@ function getDataFromActualAnimation() {
     actualAnimationData = copyObjectWithKF(visualizerData[mySong]);
     setActualData();
   } else {
-    actualAnimationData.keyframes = [];
     setInitialData();
   }
 }
@@ -76,7 +75,7 @@ function setInitialData() {
     bars: bars,
     velocity: colorVelocity,
     numberOfColors: numberOfColors,
-    keyframes: copyKeyframes(actualAnimationData.keyframes),
+    keyframes: actualAnimationData?copyKeyframes(actualAnimationData.keyframes): [],
   };
   showKeyframes();
 }
