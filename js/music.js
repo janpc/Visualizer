@@ -82,13 +82,13 @@ function getTimeFromNumber(value){
 
 function nextPreviousSong(event) {
   let index = musicArray.indexOf(mySong);
-  if (event.target == nextButton || event.target == myAudio) {
+  if (event.target == nextButton || event.target == myAudio ||event.keyCode==176 ||event.keyCode==39) {
     if (index == myMusic.length - 1) {
       index = 0;
     } else {
       index++;
     }
-  } else if (event.target == previousButton) {
+  } else if (event.target == previousButton ||event.keyCode==177 ||event.keyCode==37) {
     if (index == 0) {
       index = myMusic.length - 1;
     } else {

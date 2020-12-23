@@ -294,6 +294,7 @@ function addRemoveEventListenersMain() {
   menuButton.removeEventListener("click", showMenu);
   menuItemsDiv.removeEventListener("click", changePageMenu);
   closeMenu.removeEventListener("click", hideMenu);
+  document.removeEventListener('keydown', keysFunctionalities);
   
 }
 
@@ -320,6 +321,7 @@ function addRemoveEventListenersVisualizer() {
   menuButton.addEventListener("click", showMenu);
   menuItemsDiv.addEventListener("click", changePageMenu);
   closeMenu.addEventListener("click", hideMenu);
+  document.addEventListener('keydown', keysFunctionalities);
 
   //----------------------remove---------------------------------
   animationsMain.removeEventListener("click", changeAnimation);

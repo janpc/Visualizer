@@ -28,6 +28,9 @@ body {
 .buttons:hover > * {
   opacity: 100%;
 }
+.showButtons>*{
+  opacity: 100%;
+}
 /*-----------------------------------Buttons Bottom----------------------------*/
 .buttons__bottom {
   
