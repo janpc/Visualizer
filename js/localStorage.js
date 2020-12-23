@@ -24,9 +24,21 @@ function addKeyframe() {
     }
     let keyframe = createKeyframe();
     actualAnimationData.keyframes[time] = keyframe;
+    actualAnimationData.keyframes=sortObjectByKey(actualAnimationData.keyframes)
   }
   showKeyframes();
 }
+
+function sortObjectByKey(unordered){
+  let ordered={};
+  keys = Object.keys(unordered)
+  keys.sort((a,b)=>{return a-b});
+  keys.forEach(key=>{
+    ordered[key]=unordered[key];
+  });
+  return ordered;
+}
+
 function getDataFromActualAnimation() {
   if (visualizerData[mySong]) {
     actualAnimationData = copyObjectWithKF(visualizerData[mySong]);

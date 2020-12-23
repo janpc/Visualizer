@@ -118,7 +118,6 @@ function changeAnimation(event) {
 // ------------------------------------------Print colors-----------------------------------------------------//
 
 function printColors(here) {
-  console.log(colors);
   let keys = Object.keys(colors);
   let string = `<button
   type="button"
