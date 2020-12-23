@@ -63,7 +63,7 @@ function frameLooper() {
     changeSliderTime(myAudio.currentTime);
     let frequencyArray = createFrequencyArray();
     animate(ctx, frequencyArray);
-    if(myAudio.currentTime>=nextKeyFrame){
+    if(nextKeyFrame && myAudio.currentTime>=nextKeyFrame){
       changeKeyframe(nextKeyFrame);
     }
   }

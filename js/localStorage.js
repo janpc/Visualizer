@@ -49,6 +49,8 @@ function setActualData() {
   let keys = Object.keys(keyframes);
   if (keys.length > 0) {
     nextKeyFrame = keys[0];
+  }else {
+    nextKeyFrame = null;
   }
 }
 function saveActualData() {
@@ -154,11 +156,13 @@ function createKeyframeToShow(animation, colors, bars, velocity, time, key) {
 }
 
 function deleteKeyframe(value) {
+
   delete keyframes[value];
+  delete actualAnimationData.keyframes[value];
   showKeyframes();
+
 }
 function goToKeyframeTime(value) {
-  console.log(value);
   myAudio.currentTime = value;
   changeKeyframe(value);
   showKeyframes();

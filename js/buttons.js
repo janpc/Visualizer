@@ -268,7 +268,7 @@ function changePageMenu(event){
 
 function keyframeAction(event){
   if(event.target.id.includes('deleteKeyframe')){
-    deleteKeyframe(event.taregt.value);
+    deleteKeyframe(event.target.value);
   }else if(event.target.id.includes('goToKeyframe')){
     goToKeyframeTime(event.target.value);
   }

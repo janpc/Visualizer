@@ -50,6 +50,7 @@ function changeTime() {
 function changeSliderValue(value) {
   let slider = document.getElementById("timeRange");
   slider.value = value;
+  changeSliderTime(value);
 }
 function changeSliderTime(value) {
   
